@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+#fwin_showMsgBox {
+top: 20px;
+}
+
+#pmsubmit_btn{
+	float:left;
+    margin-left:320px;
+    margin-top:20px;
+}
+
+.modact a{
+    float:left;
+    margin-left:50px;
+}

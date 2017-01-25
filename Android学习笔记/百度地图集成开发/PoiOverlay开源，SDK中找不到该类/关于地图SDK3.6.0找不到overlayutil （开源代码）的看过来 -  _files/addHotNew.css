@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+#annright {
+	margin-top: 15px;
+	width: 298px;
+	height: 292px;
+	line-height: 25px;
+	overflow: hidden;
+	border-top: 1px solid #E5E5E5;
+	border-left: 1px solid #E5E5E5;
+	border-right: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+	background: #F9F9F9;
+}
+
+.annHeader {
+	width: 299px;
+}
+
+#annright .no-border {
+	border-bottom-color: #E5E5E5;
+	border-top: 3px solid #0199DA;
+	border-left: 1px solid #E5E5E5;
+	text-align: center;
+	line-height: 25px;
+	color: #0199DA;
+}
+
+#annright .hot {
+	text-align: center;
+	border-bottom: 1px solid #e2e2e2;
+	border-top: 2px solid #e2e2e2;
+	position: relative;
+	line-height: 32px;
+}
+
+#annright .newTitle {
+	text-align: center;
+	line-height: 32px;
+	border-top: 3px solid #0199DA;
+	border-right: 1px solid #e2e2e2;
+	color: #0199DA;
+}
+
+.annTitle {
+	cursor: pointer;
+	width: 149px;
+	height: 36px;
+	border: none;
+	border-bottom-color: #E5E5E5;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 15px;
+	padding-top: 2px;
+}
+
+.annrightbody {
+	margin-top: 10px;
+}
+
+.annrightbody li {
+	width: 270px;
+	overflow: hidden;
+	border: none;
+	border-bottom: 1px dotted #E5E5E5;
+	line-height: 35px;
+	margin-left: 15px;
+	margin-right: 10px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+.annrightbody li a {
+	color: #555555;
+}

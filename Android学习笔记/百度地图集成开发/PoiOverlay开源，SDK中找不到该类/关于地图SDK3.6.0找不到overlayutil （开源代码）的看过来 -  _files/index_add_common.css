@@ -1,0 +1,1036 @@
+@CHARSET "UTF-8";
+
+/*控制论坛整体样式*/
+
+.wp {
+    width: 1050px;
+}
+
+.mn {
+    width: 890px;
+}
+
+#header_hdc {
+    min-height: 50px;
+}
+
+
+/*顶部区样式----开始*/
+
+#toptb {
+    border-bottom: 1px solid #EEEEEE;
+    background: white;
+    padding-top: 4px;
+}
+
+.tbn {
+    background: #E8F0F7;
+}
+
+#hd {
+    height: 60px;
+    border-bottom: 1px solid #0098DE;
+    background: white;
+}
+
+#hd h2 {
+    height: 40px;
+    //	margin-top: -5px;
+}
+
+#user_notlogin {
+    float: right;
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+#um {
+    float: right;
+    padding-right: 50px;
+}
+
+#um p {
+    margin-right: -60px;
+    margin-top: -15px;
+    float: right;
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+
+#um p a {
+    padding: 0 7px 0 7px;
+}
+
+#searching_area {
+    width: 960px;
+    height: 40px;
+    margin-top: 10px;
+    margin: 10px auto;
+}
+
+#searching_area table {
+    height: 30px;
+    /*float: right;*/
+    border-collapse: collapse;
+}
+
+#searching_area table td {
+    margin: 0;
+    padding: 0;
+}
+
+#search_type {
+    width: 83px;
+    height: 30px;
+    background: #FAFAFA;
+    border: 1px solid #E5E5E5;
+    text-align: center;
+    font-family: "微软雅黑";
+    padding-left: 3px;
+    padding-top: 0px;
+}
+
+#search_type img {
+    float: right;
+    height: 30px;
+}
+
+#search_selectImg_menu {
+    margin-right: 20px;
+    border-bottom: 1px solid #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#searchInput {
+    width: 600px;
+    height: 40px;
+    border: none;
+    background: #FAFAFA;
+    border: 2px solid #CDCDCD;
+}
+
+#searchBtn {
+    width: 25px;
+    height: 29px;
+    border: none;
+    border: 2px solid #0098DC;
+}
+
+
+/*控制首页分区大小*/
+
+
+/*
+.index_mn {
+	width: 730px;
+}*/
+
+.bm {
+    background: #FAFAFA;
+}
+
+#index_zone {
+    width: 728px;
+    background: #F9F9F9;
+}
+
+.mtn {
+    width: 630px;
+    float: left;
+}
+
+
+/*控制首页分区样式*/
+
+.index_partitions {
+    border-top: 1px solid #E5E5E5;
+    background: #F9F9F9;
+    letter-spacing: 1px;
+}
+
+.first_partitions {
+    border-top: 3px solid #E5E5E5;
+}
+
+.index_catname {
+    font-family: "微软雅黑";
+    margin: 20px 0 0 25px;
+    font-size: 18px;
+}
+
+.index_catname img {
+    width: 4px;
+    height: 14px;
+}
+
+.index_partitions .fl_icn_g {
+    margin-left: 20px;
+}
+
+.index_partitions table {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.index_partitions table tr {
+    height: 90px;
+}
+
+.index_partitions table tr div {
+    padding: 5px 0 5px 5px;
+}
+
+.index_partitions table tr .fl_g:HOVER {
+    background: url("../../../static/image/common/indexmodule_back_new.png") no-repeat;
+    //background-size:100%  100%;
+    //background-size:contain;
+    background-size: 215px 100px;
+}
+
+.index_partitions table dl {
+    margin-left: 80px;
+}
+
+.index_partitions table dl dd p {
+    font-size: 12px;
+}
+
+.index_partitions table dt {
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+
+.index_partitions table dt a {
+    color: #059BD6;
+}
+
+.fl_row td {
+    border: 0px;
+}
+
+.flg {
+    background: #FAFAFA;
+    border-top: 1px solid #E5E5E5;
+}
+
+.bm_h h2 {
+    padding: 0;
+    background: #FAFAFA;
+}
+
+
+/*控制首页右边栏大小*/
+
+#sd {
+    width: 300px;
+    float: right;
+}
+
+
+/*首页公告样式开始*/
+
+.lbs_announcements {
+    width: 725px;
+    height: 200px;
+    float: left;
+    margin: 20px 0px 15px 0;
+    background-color: #ffffff;
+    border: 1px solid #E5E5E5;
+}
+
+.panel-title span {
+    font-family: "微软雅黑";
+    font-size: 14px;
+    margin: 10px 0px;
+    float: right;
+    color: #D3D3D3;
+}
+
+.panel-title span a {
+    color: #D3D3D3;
+    text-decoration: none;
+}
+
+.panel-title {
+    border-bottom: 1px solid #E5E5E5;
+    height: 45px;
+    width: 720px;
+}
+
+.panel-title p {
+    font-family: "微软雅黑";
+    font-size: 18px;
+    margin: 10px 0px;
+    height: 30px;
+    letter-spacing: 1px;
+    float: left;
+}
+
+.lbs_announcements p,
+.index_friendLink p {
+    font-family: "微软雅黑";
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px 0 5px 30px;
+    height: 30px;
+    letter-spacing: 1px;
+    height: 30px;
+    color: #5BBAE8;
+}
+
+.lbs_announcements p img,
+.index_friendLink p img {
+    width: 4px;
+    height: 14px;
+}
+
+#annbodylis {
+    margin-top: 10px;
+}
+
+#annbodylis li {
+    height: 32px;
+    margin-left: 15px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: black;
+}
+
+#annbodylis li a {
+    color: black;
+    padding-left: 6px;
+}
+
+#annbodylis li a:HOVER {
+    text-decoration: none;
+    color: #10ACE6;
+}
+
+
+/*首页公告样式结束*/
+
+
+/*首页常见问题区块样式*/
+
+.index_comprob,
+#active_users {
+    border-top: 3px solid #0199DA;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    margin: 0 0 2px 0;
+    background: #F9F9F9;
+    height: 292px;
+    max-height: 292px;
+}
+
+#active_users {
+    height: 208px;
+}
+
+.index_comprob p,
+#active_users p {
+    text-align: left;
+    height: 33px;
+    padding-left: 15px;
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    color: #20B3E9;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.index_comprob ul,
+#active_users ul {
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #E5E5E5;
+}
+
+.index_comprob ul li,
+#active_users ul li {
+    line-height: 35px;
+    margin-left: 15px;
+    margin-right: 10px;
+    border-bottom: 1px dotted #E5E5E5;
+}
+
+.index_comprob ul li a {
+    color: #555555;
+}
+
+.index_comprob ul li:HOVER {
+    color: #20B3E9;
+}
+
+
+/*首页活跃用户*/
+
+#active_users {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /*float: right;*/
+}
+
+#active_users .blue_background {
+    color: white;
+    background: url(../../../static/image/friendlink/active_new.png);
+}
+
+#active_users .gray_background {
+    color: white;
+    background: url(../../../static/image/friendlink/active.png);
+}
+
+
+/*首页友情链接*/
+
+.index_friendLink {
+    width: 728px;
+    height: 150px;
+    border-top: 3px solid #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    background: #F9F9F9;
+    letter-spacing: 1px;
+}
+
+.index_friendLink span {
+    position: relative;
+    float: left;
+    text-align: left;
+    width: 170px;
+    height: 45px;
+}
+
+.index_friendLink span img {
+    width: 150px;
+    height: 30px;
+}
+
+.first_friendlink {
+    margin-left: 20px;
+    width: 210px;
+}
+
+.second_friendlink {
+    width: 190px;
+    margin-left: 20px;
+}
+
+.third_friendlink {
+    width: 120px;
+    margin-left: 25px;
+}
+
+
+/*搜索结果样式调整----开始---*/
+
+.threadlist_tl,
+#threadlist {
+    width: 1050px;
+}
+
+#threadlist {
+    border: 1px solid #E5E5E5;
+}
+
+#threadlist ul li {
+    height: 75px;
+    padding-left: 8px;
+    border-bottom: 1px solid #E5E5E5;
+    padding-top: 5px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+
+
+/*搜索结果样式调整----结束---*/
+
+
+/*板块样式开始*/
+
+
+/* .forum-tag{
+	width: 725px;
+	height: 500px;
+	background-color: #fff;
+}
+
+.forum-title .forum-title-list{
+	cursor: pointer;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	padding-top: 2px;
+	width:144px;
+	height:30px;
+	float: left;
+	line-height: 30px;
+	text-align: center;
+
+}
+
+.forum-board-list{
+	width:200px;
+	height:50px;
+	float: left;
+	margin: 10px;
+	background-color:#20B3E9;
+}
+
+.forum-title-activate{
+	border-top: 1px solid #24A6E3;
+
+}
+
+.forum-title-no-activate{
+	border-top:1px solid #DBDBDB;
+	border-left: 1px solid #DBDBDB;
+	border-bottom: 1px solid #DBDBDB;
+	background-color:#E8F6FF;
+
+}
+ */
+
+.forum-tabs {
+    width: 725px;
+    height: 300px;
+    /*background-color: #ededed;*/
+    border: 1px solid #ededed;
+    float: left;
+}
+
+.forum-board {
+    width: 725px;
+    float: left;
+    height: 250px;
+}
+
+.forum-title-list {
+    list-style: none;
+    cursor: pointer;
+    float: left;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    padding-top: 2px;
+    width: 20%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #E8F6FF;
+    padding: 1px solid #DBDBDB;
+    box-shadow: inset 1px 0px 0px #DBDBDB;
+}
+
+.forum-board-list {
+    float: left;
+}
+
+.forum-board {}
+
+.forum-board-list li {
+    list-style: none;
+    width: 200px;
+    height: 50px;
+    float: left;
+    margin-left: 30px;
+    margin: 30px 10px 20px 30px;
+}
+
+.forum-board-list li dt a {
+    color: #059BD6;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.forum-info {
+    margin-left: 70px;
+}
+
+
+/*板块样式结束*/
+
+
+/*热门主题*/
+
+.forum-first {
+    width: 100%;
+}
+
+.region-start {
+    width: 725px;
+    height: 100%;
+    float: left;
+}
+
+
+/*右侧栏*/
+
+.region-end {
+    width: 300px;
+    float: right;
+}
+
+.rank-vertical {
+    height: 20px;
+    float: left;
+    border-right: 1px solid #E5E5E5;
+    margin: 5px 5px 5px 5px;
+}
+
+.forum-ranking-title {
+    float: left;
+    height: 35px;
+    width: 300px;
+}
+
+.forum-ranking-title span {
+    float: left;
+}
+
+.forum-ranking {
+    width: 300px;
+    height: 400px;
+    float: right;
+    border: 1px solid #ededed;
+    margin: 15px 0px 10px 10px;
+}
+
+.forum-score-list {
+    float: right;
+    width: 300px;
+    height: 300px;
+    display: block;
+}
+
+.forum-integral-list {
+    /*padding: 10px;*/
+}
+
+.forum-integral-list li,
+.forum-reply-list li {
+    white-space: nowrap;
+    width: 300px;
+    height: 40px;
+    margin: 20px;
+    list-style: none;
+}
+
+.forum-integral-list li img,
+.forum-reply-list li img {
+    margin-left: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.forum-integral-list li em,
+.forum-reply-list li em {
+    width: 20%;
+    float: right;
+    margin: 15px 20px;
+}
+
+.forum-integral-list li a,
+.forum-reply-list li a {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 6px;
+    width: 20%;
+}
+
+.forum-ranking-font {
+    cursor: pointer;
+    height: 35px;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 20px;
+    padding: 10px 0px 0px 20px;
+    float: left;
+}
+
+.forum-ranking-time span {
+    float: right;
+    display: block;
+}
+
+.forum-ranking-24h {
+    cursor: pointer;
+    height: 35px;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 10px 10px 5px 0px;
+    float: right;
+}
+
+.forum-ranking-week {
+    cursor: pointer;
+    height: 35px;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 10px 0px 5px 0px;
+    float: right;
+}
+
+
+/*首页两格*/
+
+.forum-two {
+    margin-top: 15px;
+    width: 725px;
+    height: 250px;
+    /* 	border-top: 1px solid #E5E5E5;
+border-left: 1px solid #E5E5E5;
+border-right: 1px solid #E5E5E5;
+border-bottom: 1px solid #E5E5E5; */
+    border: 1px solid #ededed;
+    background: #ffffff;
+    /*float: left;*/
+}
+
+.forum-two-title {
+    width: 725px;
+    height: 40px;
+    line-height: 25px;
+    overflow: hidden;
+    /*	border-top: 1px solid #E5E5E5;
+	border-left: 1px solid #E5E5E5;
+	border-right: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;*/
+    background: #ffffff;
+}
+
+.forum-two-title span {
+    cursor: pointer;
+    height: 38px;
+    width: 49.8%;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 38px;
+    text-align: center;
+    float: left;
+    /*border-top: 1px solid #ededed;*/
+    /*box-shadow:0px 5px 0px  #0199DA inset;*/
+    border-bottom: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    display: block;
+}
+
+.forum-hot {
+    width: 720px;
+    /*height: 200px;*/
+}
+
+.forum-new {
+    width: 720px;
+    /*height: 200px;*/
+}
+
+.forum-two-body {
+    width: 720px;
+    height: 200px;
+    padding: 10px;
+}
+
+.forum-two-body li {
+    width: 720px;
+    height: 30px;
+    border: none;
+    list-style-image: url('../../../static/image/common/point.png');
+    line-height: 30px;
+    margin-left: 15px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+
+.forum-two-body li a {
+    color: #555555;
+}
+
+.forum-score {}
+
+.forum-score span {
+    float: left;
+}
+
+.forum-integral {
+    cursor: pointer;
+    height: 30px;
+    width: 49%;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+}
+
+.forum-reply {
+    cursor: pointer;
+    height: 30px;
+    width: 50%;
+    color: #070707;
+    font-family: "微软雅黑";
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+}
+
+
+/*搜索开始*/
+
+.map-search {
+    width: 1090;
+    height: 70px;
+    background-color: #E8F6FF;
+}
+
+.map-search-form {
+    width: 1050px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.map-search-input {
+    width: 715px;
+    height: 40px;
+    float: left;
+}
+
+.map-search-input input,
+#scbar_txt {
+    width: 715px;
+    height: 35px;
+    margin: 15px 10px 10px 0px;
+    padding: 0px 0px 0px 10px;
+    border: 1px solid #ededed;
+}
+
+.map-search-btn {
+    width: 130px;
+    float: left;
+    margin: 15px 10px 10px 30px;
+}
+
+.map-search-btn img {
+    cursor: pointer;
+    width: 130px;
+    height: 35px;
+}
+
+.map-question-btn {
+    width: 130px;
+    float: left;
+    margin: 15px 10px 10px 5px;
+}
+
+.map-question-btn img {
+    cursor: pointer;
+    width: 130px;
+    height: 35px;
+}
+
+.map-question {
+    width: 130px;
+    float: right;
+    margin: -55px 0px 10px 15px;
+}
+
+.map-question img {
+    cursor: pointer;
+    width: 130px;
+    height: 35px;
+}
+
+.forum-main {
+    width: 100%;
+    margin: auto;
+}
+
+.footer-link {
+    width: 725px;
+    height: 100px;
+    float: left;
+}
+
+.link-title {
+    width: 720px;
+    height: 30px;
+}
+
+.link-title p {
+    font-family: "微软雅黑";
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 30px;
+}
+
+.friend-link {
+    width: 725px;
+    height: 150px;
+}
+
+.friend-link span {
+
+    width: 155px;
+    height: 50px;
+    /*background-color: #F9F9F9;*/
+    float: left;
+    margin: 10px;
+    border: 1px solid #ededed;
+}
+
+.friend-link span img {
+    width: 150px;
+    height: 40px;
+    margin: 5px 3px;
+}
+
+.no-question {
+    z-index: 1000;
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    background: #fff;
+    border: 2px solid #ededed;
+    width: 600px;
+    height: 150px;
+    margin: -50px 0 0 -50px;
+    display: none;
+}
+
+.no-question-content {
+    margin: 30px auto;
+    width: 400px;
+    height: 100px;
+}
+
+.no-question-content h2 {
+    font-family: "微软雅黑";
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 30px;
+}
+
+.no-question-content img {
+    width: 130px;
+    height: 35px;
+    margin: 15px 120px;
+}
+
+
+/* 发帖导航 by wangshudong */
+
+.pbnv {
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 300px;
+    padding: 7px 0;
+}
+
+.pbl {
+    overflow: hidden;
+    margin: 9px 0;
+    width: 415px;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #CCC;
+    background: {
+        WRAPBG
+    }
+    ;
+}
+
+.pbl li {
+    float: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 5px;
+    width: 196px;
+    height: 300px;
+    border-right: 1px solid #CCC;
+}
+
+.pbl p {
+    height: 25px;
+    line-height: 25px;
+}
+
+.pbl a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 4px;
+    text-decoration: none;
+    color: {
+        HIGHLIGHTLINK
+    }
+    ;
+    border: solid {
+        WRAPBG
+    }
+    ;
+    border-width: 1px 0;
+}
+
+.pbl a:hover {
+    text-decoration: none;
+    background-color: #F3F3F3;
+}
+
+.pbl .highlightlink {
+    color: #08C;
+}
+
+.pbls a,
+.pbls a:hover {
+    background-color: #EEE;
+    color: {
+        MIDTEXT
+    }
+    ;
+    font-weight: 700;
+}
+
+.pbsb {
+    background: url({IMGDIR}/arrow.gif) right -33px no-repeat;
+}
+
+/*关闭按钮*/
+.no-question-colse{
+	float: right;
+	margin: 5px;
+}
+.no-question-colse a{
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.question-result{
+    display: none;
+    height: 100%;
+}

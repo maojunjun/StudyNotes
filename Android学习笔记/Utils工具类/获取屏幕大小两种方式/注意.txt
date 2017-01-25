@@ -1,0 +1,7 @@
+在Android中，代码里面的尺寸的单位都是 像素（px），而xml文件中的单位可以指定为像素(px),也可以指定为设备独立像素（dip），所以有的时候两种单位需要转换，官方文档中给出的转换公式为：
+
+pix = dip * density ；即 像素 = 设备独立像素 * 像素密度；
+
+在代码里面直接把dp转换成像素：
+
+	getResources().getDimensionPixelSize(R.dimen.offset);

@@ -1,0 +1,8 @@
+DisplayMetrics dm = getResources().getDisplayMetrics();
+		
+		int height = dm.heightPixels ;
+		int width = dm.widthPixels ;
+		
+		float density = dm.density;//ÆÁÄ»ÃÜ¶È
+		
+		int densityDpi = dm.densityDpi;

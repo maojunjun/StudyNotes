@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://www.open-open.com/lib/view/open1438065400878.html -->
+<html><head lang="cn"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="GreenDao,Android开发">
+	<meta name="description" content="我相信，在平时的开发过程中，大家一定会或多或少地接触到 SQLite。然而在使用它时，我们往往需要做许多额外的工作，像编写 SQL 语句与解析查询结果等。所以，适用于 Android 的ORM 框架也就孕育而生了，现在市面上主流的框架有 OrmLite、SugarORM、Active Android、Realm 与 GreenDAO。而今天的主角便是 greenDAO，下面，我将详解地介绍如何在 Android Studio 上使用 greenDAO，并结合代码总结一些使用过程中的心得。 
+
+">
+	<link rel="shortcut icon" href="http://www.open-open.com/lib/favicon.ico">
+	<link rel="copyright" href="http://www.open-open.com/">
+
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/idea.min.css" rel="stylesheet">
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery-ui.min.css" rel="stylesheet">
+	
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/bootstrap.min.css" rel="stylesheet">
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/font-awesome.min.css" rel="stylesheet">
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery-confirm.css" rel="stylesheet">
+	<link href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/styles.css" rel="stylesheet">
+
+	<style type="text/css" media="screen, projection">
+		/*<![CDATA[*/
+		@import "/lib/css/common.css";
+		@import "/lib/css/main.css";
+		@import "/lib/css/jGrowl.css";
+		/*]]>*/
+		.articleIndex li.active a {
+			color: #0099ff;
+		}
+	</style>
+	<style type="text/css">
+		.topheader h1{font-size: 24px;margin: 0;}
+		.crumbs{padding-bottom: 5px;font-size: 11px;}.crumbs,.crumbs a,.meta{color: #bbb;}
+		#tag-list{margin-top: 10px;}
+		#tag-list a{background: #fff;padding: 2px 10px;text-decoration: none;}
+		#tag-list a:hover{background: #c5e2ff;color: #0099ff;}
+		.crumbs a:hover{color: #0099ff;}
+		#readercontainer{background: #fff;padding: 40px 89px;}
+
+		.post-nav ul{
+			margin: 0;
+		}
+		.post-nav>ul>li a{
+			padding-left: 10px;
+		}
+		.post-nav>ul>li>ul>li a{
+			padding-left: 30px;
+		}
+		.post-nav>ul>li>ul>li>ul>li a{
+			padding-left: 50px;
+		}
+		.post-nav ul li.active a{
+			border-left: 2px solid #0099ff;
+		}
+
+		.aside-fixed {
+			left: 50%;
+			margin-left: 310px;
+			position: fixed;
+			top: 65px;
+			width: 260px;
+		}
+		.bdsharebuttonbox {
+			background: #eee none repeat scroll 0 0;
+			margin-top: 10px;
+			padding: 10px;
+			width: 100%;
+		}
+
+	</style>
+
+	<script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/push.js"></script><script type="text/javascript">
+		if(window.location.toString().indexOf('pref=padindex') != -1){
+		}else{
+			if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+				if(window.location.href.indexOf("?mobile")<0){
+					try{
+						if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+							window.location.href="http://m.open-open.com/m/lib/view/1438065400878.html";
+						}else if(/iPad/i.test(navigator.userAgent)){
+							window.location.href="http://m.open-open.com/m/lib/view/1438065400878.html"
+						}else{
+							window.location.href="http://m.open-open.com/m/lib/view/1438065400878.html"
+						}
+					}catch(e){}
+				}
+			}
+		}
+	</script>
+
+
+	<script type="text/javascript">
+		var rooturl="/lib";
+		var wgDocKey='1438065400878';
+		var wgDocTitle='Android ORM 框架之 greenDAO 使用心得';
+		var wgDocStatusFlag='';
+		var wgUserFolders=null;
+		var wgDownFrame=null;
+		var wgCostByUser=null;
+		var wgDocFavoriteByUser=false;
+		var wgDocScoreByUser=null;
+		var wgUserLogined=0;
+		var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+
+
+	</script>
+
+
+
+
+<script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/share.js"></script><link rel="stylesheet" href="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/share_style0_16.css"></head>
+<body id="view">
+
+
+<style>
+	.global-tags{background: #333;color: #ababab;height: 30px;line-height: 30px;width: 100%;}
+	.global-tags .container{position: relative;}
+	.global-tags ul{ height: 30px; margin: 0; overflow: hidden;}
+	.global-tags a{color:#ababab;padding: 5px; }
+	.global-tags a:hover{color:#e0e0e0; }
+	.global-tags li { display: inline-block; padding: 0; }
+	.global-tags  .more { background-color: #333; height: 30px; position: absolute; right: 0; top: 0; width: 30px; }
+	.global-tags  .more:before { background-image: linear-gradient(90deg, rgba(0, 95, 60, 0), #333); background-size: 100% auto; content: ""; height: 100%; left: -20px; position: absolute; top: 0; width: 20px; }
+
+	/* menu */
+	.all-sort{z-index: 100;position: absolute;left: 15px;top: 30px;display: none;}
+	.all-sort-head{background: #ff3c00; color: #fff; margin-right: 20px; text-align: center; width: 160px;float: left;}
+	.all-sort-head a{color: #fff;}
+	.item-list .subitem{float:left;padding:20px;}
+	.all-sort-list{position:relative;width:160px;border:2px solid #393939;border-top:none;background:#393939;float: left;z-index: 100;}
+	.all-sort-list .item .parent{font-weight: 700;border: none;width: 120px;text-align: right;margin-right: 2px;}
+	.all-sort-list .item .parent i{font: 400 9px/14px consolas; height: 14px; margin-left: 10px; width: 4px;}
+	.all-sort-list .item.bo{border-top:none;}
+	.all-sort-list .item h3{height:40px;line-height:40px;font-size:14px;font-weight:normal;width:158px;overflow:hidden; color:#ffffff;margin: 0;}
+	.all-sort-list .item h3 a{color: #ffffff;}
+	.all-sort-list .item:hover h3,.all-sort-list .item:hover span,.all-sort-list .item:hover h3 a,.all-sort-list .item .active ,.all-sort-list .item .active a,.all-sort-list .item .active span{color:#E4393C;}
+	.all-sort-list .item span{padding:0px 5px;color:#ffffff;font-family:"\5B8B\4F53";}
+	.all-sort-list .item a{text-decoration:none;}
+	.all-sort-list .subitem a{ float: left;  margin:5px 20px 5px 0;border-left:1px solid #eee;line-height: 14px;height: 20px;}
+	.all-sort-list .item a:hover{color:#E4393C;}
+	.all-sort-list .item:hover h3,.all-sort-list .item .active{position:relative;z-index:13;background:#FFF;border-color:#DDD;border-width:1px 0px;border-style:solid;}
+	.all-sort-list .item-list{ display:none; position:absolute; width:705px; min-height:360px; _height:360px; background:#FFF; left:157px;  border:1px solid #DDD; top:0; z-index:10; }
+
+</style>
+
+
+<header class="site-header">
+	<div class="header-top ">
+		<div class="header-top-inner">
+			<div class="" style="margin: 0 30px;">
+				<div class="row">
+					<div class="header-top-left col-lg-6 col-md-6 col-sm-6 col-xs-12 v-grid">
+						<div class="header-talet">
+							<a href="http://www.open-open.com/">首页</a> &nbsp;
+							<a class="" href="http://www.open-open.com/code/">代码</a> &nbsp;
+							<a class="" href="http://www.open-open.com/doc/">文档</a> &nbsp;
+							<a title="OPEN论坛频道" href="http://www.open-open.com/solution/">问答</a> &nbsp;
+							<a title="OPEN资讯" class="" href="http://www.open-open.com/news/">资讯</a> &nbsp;
+							<a title="OPEN经验库" class="active" href="http://www.open-open.com/lib/">经验</a> &nbsp;
+							<a title="GitHub日报" class="" href="http://www.open-open.com/github/">GitHub日报</a>
+							&nbsp;
+						</div>
+					</div>
+					<div class="header-top-right col-lg-6 col-md-6 col-sm-6 col-xs-12 v-grid">
+						<div class="user-info pull-right" id="Personal">
+							
+								<a href="http://www.open-open.com/lib/view/open1438065400878.html#" title="登录OPEN经验库" class="login">登录</a>&nbsp;&nbsp;
+								<a href="http://www.open-open.com/lib/view/open1438065400878.html#" title="注册新的账号" class="register">注册</a>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar ">
+		<div class="container">
+			<div class="navbar-header" style="margin-right: 30px;">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span aria-hidden="true" class="glyphicon glyphicon-menu-hamburger"></span>
+					<span aria-hidden="true" class="glyphicon glyphicon-menu-up"></span>
+				</button>
+				<a class="top-logo" href="http://www.open-open.com/lib"><span>www.open-open.com/lib</span></a>
+				<span style="font-size: 26px;color: #db6d4c">OPEN经验</span>
+				<span style="font-size: 12px;color: #b5b5b5"></span>
+			</div>
+
+			<div class="pull-right" style="padding: 20px;">
+				<button class="btn btn-info br40" id="upload" type="button">投稿</button>
+			</div>
+			<div id="search">
+				<form onsubmit="document.charset=&#39;utf-8&#39;;" accept-charset="utf-8" method="post" action="http://www.open-open.com/lib/query" name="sf">
+					<input type="hidden" value="all" name="site">
+					<div class="input-group">
+						<input type="text" x-webkit-speech="" placeholder="经验搜索" class="form-control" name="q" id="kw">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                      </span>
+
+					</div>
+				</form>
+
+				<!-- /input-group -->
+
+			</div>
+
+		</div>
+	</nav>
+	<div class="global-tags">
+		<div class="container">
+			<div class="all-sort-head"><a href="http://www.open-open.com/lib/list/all">全部经验分类</a>&nbsp;<i aria-hidden="true" class="fa fa-toggle-down"></i></div><div class="all-sort"><div class="all-sort-list"><div data-submenu-id="submenu1" class="item bo"><h3><span>·</span><a href="http://www.open-open.com/lib/list/1">软件开发</a></h3><div id="submenu1" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/405">VR</a><a href="http://www.open-open.com/lib/list/2">Web框架</a><a href="http://www.open-open.com/lib/list/3">GUI开发框架</a><a href="http://www.open-open.com/lib/list/4">图表/报表制作</a><a href="http://www.open-open.com/lib/list/5">搜索引擎</a><a href="http://www.open-open.com/lib/list/6">模板引擎</a><a href="http://www.open-open.com/lib/list/7">缓存组件</a><a href="http://www.open-open.com/lib/list/8">Ajax框架</a><a href="http://www.open-open.com/lib/list/9">XML操作类库</a><a href="http://www.open-open.com/lib/list/10">HTML操作类库</a><a href="http://www.open-open.com/lib/list/12">文件上传</a><a href="http://www.open-open.com/lib/list/347">3D图形处理库</a><a href="http://www.open-open.com/lib/list/14">图形/图像处理</a><a href="http://www.open-open.com/lib/list/15">常用工具包</a><a href="http://www.open-open.com/lib/list/16">JSON开发包</a><a href="http://www.open-open.com/lib/list/353">OAuth开发包</a><a href="http://www.open-open.com/lib/list/17">PDF工具包</a><a href="http://www.open-open.com/lib/list/18">Flex开发</a><a href="http://www.open-open.com/lib/list/19">Office文档处理</a><a href="http://www.open-open.com/lib/list/20">日志处理</a><a href="http://www.open-open.com/lib/list/21">网络工具包</a><a href="http://www.open-open.com/lib/list/22">多媒体处理</a><a href="http://www.open-open.com/lib/list/23">WEB服务/RPC/SOA</a><a href="http://www.open-open.com/lib/list/24">RSS/ATOM相关</a><a href="http://www.open-open.com/lib/list/25">持久层框架</a><a href="http://www.open-open.com/lib/list/26">作业调度框架</a><a href="http://www.open-open.com/lib/list/27">工作流引擎</a><a href="http://www.open-open.com/lib/list/28">业务规则引擎</a><a href="http://www.open-open.com/lib/list/29">面向方面AOP/IoC</a><a href="http://www.open-open.com/lib/list/30">JEE框架</a><a href="http://www.open-open.com/lib/list/31">安全相关</a><a href="http://www.open-open.com/lib/list/32">OpenID/单点登录SSO</a><a href="http://www.open-open.com/lib/list/34">条形码/二维码开发包</a><a href="http://www.open-open.com/lib/list/35">验证码(Captcha)</a><a href="http://www.open-open.com/lib/list/96">网络爬虫</a><a href="http://www.open-open.com/lib/list/214">OSGi</a><a href="http://www.open-open.com/lib/list/237">网络技术</a><a href="http://www.open-open.com/lib/list/324">Google相关API</a><a href="http://www.open-open.com/lib/list/328">Swing开发包</a><a href="http://www.open-open.com/lib/list/332">HTML编辑器</a><a href="http://www.open-open.com/lib/list/337" style="color:#FF3C00">JavaScript开发工具包</a><a href="http://www.open-open.com/lib/list/352">TTS/语音合成和处理</a><a href="http://www.open-open.com/lib/list/367">游戏开发</a><a href="http://www.open-open.com/lib/list/370">加密/解密软件包</a><a href="http://www.open-open.com/lib/list/374">源代码语法着色</a><a href="http://www.open-open.com/lib/list/376">WebSocket 开发</a><a href="http://www.open-open.com/lib/list/381">MathML显示与编辑</a><a href="http://www.open-open.com/lib/list/383">计算机视觉库/人脸识别</a><a href="http://www.open-open.com/lib/list/385">XML-RPC 开发</a><a href="http://www.open-open.com/lib/list/386">Markdown处理库</a><a href="http://www.open-open.com/lib/list/387">神经网络</a><a href="http://www.open-open.com/lib/list/389">多媒体播放器</a><a href="http://www.open-open.com/lib/list/391">推荐引擎</a><a href="http://www.open-open.com/lib/list/394">机器学习</a><a href="http://www.open-open.com/lib/list/401">算法</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu2" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/36">开发语言与工具</a></h3><div id="submenu2" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/406">R语言</a><a href="http://www.open-open.com/lib/list/37" style="color:#FF3C00">Java开发</a><a href="http://www.open-open.com/lib/list/38">.NET开发</a><a href="http://www.open-open.com/lib/list/39">PHP开发</a><a href="http://www.open-open.com/lib/list/40">C/C++开发</a><a href="http://www.open-open.com/lib/list/42">Ruby开发</a><a href="http://www.open-open.com/lib/list/43">Python开发</a><a href="http://www.open-open.com/lib/list/148">ActionScript开发</a><a href="http://www.open-open.com/lib/list/145" style="color:#FF3C00">JavaScript开发</a><a href="http://www.open-open.com/lib/list/44">Perl开发</a><a href="http://www.open-open.com/lib/list/263">Delphi开发</a><a href="http://www.open-open.com/lib/list/243">Erlang开发</a><a href="http://www.open-open.com/lib/list/211">Google Go/Golang开发</a><a href="http://www.open-open.com/lib/list/201">Scala开发</a><a href="http://www.open-open.com/lib/list/240">Lua开发</a><a href="http://www.open-open.com/lib/list/392">Apple Swift开发</a><a href="http://www.open-open.com/lib/list/301">Objective-C开发</a><a href="http://www.open-open.com/lib/list/45">BUG跟踪管理</a><a href="http://www.open-open.com/lib/list/294">Lisp开发</a><a href="http://www.open-open.com/lib/list/46">项目构建</a><a href="http://www.open-open.com/lib/list/41">移动开发</a><a href="http://www.open-open.com/lib/list/47">单元测试</a><a href="http://www.open-open.com/lib/list/48">测试工具</a><a href="http://www.open-open.com/lib/list/49">性能测试和优化</a><a href="http://www.open-open.com/lib/list/50">程序调试</a><a href="http://www.open-open.com/lib/list/51">代码混淆和加密</a><a href="http://www.open-open.com/lib/list/52">UML/模型工具</a><a href="http://www.open-open.com/lib/list/53">安装制作</a><a href="http://www.open-open.com/lib/list/54">代码分析/审查/优化</a><a href="http://www.open-open.com/lib/list/55">前端技术</a><a href="http://www.open-open.com/lib/list/179">Eclipse开发工具</a><a href="http://www.open-open.com/lib/list/205">IntelliJ IDEA</a><a href="http://www.open-open.com/lib/list/281">NetBeans</a><a href="http://www.open-open.com/lib/list/349">程序文档工具</a><a href="http://www.open-open.com/lib/list/361">语法/词法分析器</a><a href="http://www.open-open.com/lib/list/362">脚本/动态语言</a><a href="http://www.open-open.com/lib/list/364">持续集成系统</a><a href="http://www.open-open.com/lib/list/375">Web开发工具</a><a href="http://www.open-open.com/lib/list/388">Node.js 开发</a><a href="http://www.open-open.com/lib/list/395">中文分词</a><a href="http://www.open-open.com/lib/list/399" style="color:#FF3C00">Android Studio开发工具</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu3" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/57">网站系统</a></h3><div id="submenu3" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/58">论坛系统BBS</a><a href="http://www.open-open.com/lib/list/59">建站系统CMS</a><a href="http://www.open-open.com/lib/list/60">电子商务/商城</a><a href="http://www.open-open.com/lib/list/61">SNS社交网络/交友平台</a><a href="http://www.open-open.com/lib/list/62">百科系统Wiki</a><a href="http://www.open-open.com/lib/list/63">门户平台Portal</a><a href="http://www.open-open.com/lib/list/64">网络会议/视频会议</a><a href="http://www.open-open.com/lib/list/65">相册/照片/多媒体系统</a><a href="http://www.open-open.com/lib/list/66">微博工具/系统</a><a href="http://www.open-open.com/lib/list/363">博客系统</a><a href="http://www.open-open.com/lib/list/379">开源问答系统</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu4" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/67">企业应用</a></h3><div id="submenu4" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/68">ERP/CRM</a><a href="http://www.open-open.com/lib/list/69">OA办公/协作平台</a><a href="http://www.open-open.com/lib/list/70">WebMail系统</a><a href="http://www.open-open.com/lib/list/71">地理信息系统GIS</a><a href="http://www.open-open.com/lib/list/72">数据挖掘</a><a href="http://www.open-open.com/lib/list/73">文档管理</a><a href="http://www.open-open.com/lib/list/74">项目/任务管理</a><a href="http://www.open-open.com/lib/list/333">教学科研相关</a><a href="http://www.open-open.com/lib/list/357">开源SIP项目</a><a href="http://www.open-open.com/lib/list/368">计算机辅助设计CAD/CAM</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu5" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/75">服务器软件</a></h3><div id="submenu5" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/76">应用服务器</a><a href="http://www.open-open.com/lib/list/77">Web服务器</a><a href="http://www.open-open.com/lib/list/78">FTP服务器</a><a href="http://www.open-open.com/lib/list/79">邮件服务器</a><a href="http://www.open-open.com/lib/list/80">缓存服务器</a><a href="http://www.open-open.com/lib/list/81">版本控制系统</a><a href="http://www.open-open.com/lib/list/82">路由器/防火墙</a><a href="http://www.open-open.com/lib/list/83">电话/通讯/IM聊天</a><a href="http://www.open-open.com/lib/list/84">集群/负载均衡</a><a href="http://www.open-open.com/lib/list/85">流媒体服务器</a><a href="http://www.open-open.com/lib/list/86">消息系统</a><a href="http://www.open-open.com/lib/list/220">分布式/云计算/大数据</a><a href="http://www.open-open.com/lib/list/298">企业服务总线ESB</a><a href="http://www.open-open.com/lib/list/321">建站服务器套件</a><a href="http://www.open-open.com/lib/list/348">虚拟化</a><a href="http://www.open-open.com/lib/list/355">目录服务LDAP</a><a href="http://www.open-open.com/lib/list/393">容器系统</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu6" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/87">插件和扩展</a></h3><div id="submenu6" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/88">Eclipse插件</a><a href="http://www.open-open.com/lib/list/89">jQuery插件</a><a href="http://www.open-open.com/lib/list/331">Node.js扩展</a><a href="http://www.open-open.com/lib/list/338">jQuery分页插件</a><a href="http://www.open-open.com/lib/list/346">Prototype扩展</a><a href="http://www.open-open.com/lib/list/356">Chrome插件/扩展</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu7" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/90">数据库相关</a></h3><div id="submenu7" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/91">数据库服务器</a><a href="http://www.open-open.com/lib/list/92">数据库管理工具</a><a href="http://www.open-open.com/lib/list/93">数据库驱动程序</a><a href="http://www.open-open.com/lib/list/94">数据库建模</a><a href="http://www.open-open.com/lib/list/122">数据库连接池</a><a href="http://www.open-open.com/lib/list/154">SQL</a><a href="http://www.open-open.com/lib/list/307">NoSQL数据库</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu8" class="item "><h3><span>·</span><a href="http://www.open-open.com/lib/list/155">操作系统</a></h3><div id="submenu8" class="item-list clearfix"><div class=" subitem"><a href="http://www.open-open.com/lib/list/156">Linux</a><a href="http://www.open-open.com/lib/list/182">CentOS</a><a href="http://www.open-open.com/lib/list/183">Ubuntu</a><a href="http://www.open-open.com/lib/list/224">UNIX</a><a href="http://www.open-open.com/lib/list/251">Fedora</a><a href="http://www.open-open.com/lib/list/274">FreeBSD</a><a href="http://www.open-open.com/lib/list/310">Solaris</a><a href="http://www.open-open.com/lib/list/311">openSUSE</a><a href="http://www.open-open.com/lib/list/312">Debian</a><a href="http://www.open-open.com/lib/list/313">OpenBSD</a></div><div class="cat-right"></div></div></div><div data-submenu-id="submenu9" class="item "><h3><span>·</span>其他分类</h3><div id="submenu9" class="item-list clearfix"><div class=" subitem"><p class="clearfix"><a href="http://www.open-open.com/lib/list/159" class="parent">软件开发管理<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/174">敏捷开发</a><a href="http://www.open-open.com/lib/list/178">项目管理</a><a href="http://www.open-open.com/lib/list/196">软件架构</a><a href="http://www.open-open.com/lib/list/296">软件测试</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/319" class="parent">管理和监控<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/320">系统监控</a><a href="http://www.open-open.com/lib/list/360">日志分析和统计</a><a href="http://www.open-open.com/lib/list/366">备份工具</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/322" class="parent">应用工具<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/323">磁盘/光驱工具</a><a href="http://www.open-open.com/lib/list/359">文档/文本编辑</a><a href="http://www.open-open.com/lib/list/384">终端/远程登录</a></p><p class="clearfix"><a href="http://www.open-open.com/lib/list/329" class="parent">游戏相关<i>&gt;</i></a><a href="http://www.open-open.com/lib/list/330">网页游戏</a></p></div><div class="cat-right"></div></div></div></div></div>
+			<ul class="nav__list">
+				<li class="nav__item ">
+
+				</li>
+				<li class="nav__item"><i class="fa fa-tags"></i></li>
+
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Android" rel="tag">Android</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/IOS" rel="tag">IOS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/JavaScript" rel="tag">JavaScript</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/HTML5" rel="tag">HTML5</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/CSS" rel="tag">CSS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/jQuery" rel="tag">jQuery</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Python" rel="tag">Python</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/PHP" rel="tag">PHP</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/NodeJS" rel="tag">NodeJS</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Java" rel="tag">Java</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Spring" rel="tag">Spring</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/MySQL" rel="tag">MySQL</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/MongoDB" rel="tag">MongoDB</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Redis" rel="tag">Redis</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/NOSQL" rel="tag">NOSQL</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Vim" rel="tag">Vim</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/C++" rel="tag">C++</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/C#" rel="tag">C#</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/JSON" rel="tag">JSON</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Ruby" rel="tag">Ruby</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Linux" rel="tag">Linux</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Nginx" rel="tag">Nginx</a></li>
+				<li class="nav__item"><a href="http://www.open-open.com/lib/tag/Docker" rel="tag">Docker</a></li>
+				<li class="more"></li>
+
+			</ul>
+
+		</div>
+	</div>
+</header>
+
+
+
+<div class="topheader" style="background: #eee;padding: 10px 0 30px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="crumbs">
+					<a href="http://www.open-open.com/lib/list/all">所有分类</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/36">开发语言与工具</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/41">移动开发</a>
+					
+						&nbsp;&gt;&nbsp;
+						<a href="http://www.open-open.com/lib/list/177">Android开发</a>
+					
+				</div>
+				<h1 id="articleTitle">Android ORM 框架之 greenDAO 使用心得</h1>
+				<div class="meta" style="margin-top: 10px;">
+					<span id="tag-list">
+					
+						<a href="http://www.open-open.com/lib/tag/GreenDao">GreenDao</a>
+					
+					</span>&nbsp;
+
+					<span class="item">2015-07-28 14:51:23 发布</span>
+				</div>
+
+
+			</div>
+			<div class="col-md-3">
+				<table>
+					<tbody>
+					<tr>
+						<td><strong>您的评价</strong>:</td>
+						<td>
+							<div id="rate" class="rate-container"><span id="star1" class="star-big-off" title="很差">&nbsp;</span><span id="star2" class="star-big-off" title="较差">&nbsp;</span><span id="star3" class="star-big-off" title="还行">&nbsp;</span><span id="star4" class="star-big-off" title="不错">&nbsp;</span><span id="star5" class="star-big-off" title="力荐">&nbsp;</span></div>
+						</td>
+						<td width="30">
+							<span id="score-num">5.0</span>
+						</td>
+						<td width="30">
+							<div id="rate-tip"></div>
+						</td>
+
+					</tr>
+					</tbody>
+				</table>
+				<div id="favorite-container"><a id="favorite" href="javascript:void(0)" class="btn btn-default">收藏</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="item">9收藏</span>
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="container">
+<div class="row">
+
+		<div id="readercontainer" class="col-md-9">
+				<article>
+					<p>原文：<a href="http://itangqi.me/android/using-greendao-experience/">http://itangqi.me/android/using-greendao-experience/</a>&nbsp; </p>
+<h2 id="articleHeader0">前言 </h2>
+<p>我相信，在平时的开发过程中，大家一定会或多或少地接触到&nbsp;<a href="https://en.wikipedia.org/wiki/SQLite">SQLite</a>。然而在使用它时，我们往往需要做许多额外的工作，像编写 SQL 语句与解析查询结果等。所以，适用于 Android 的ORM&nbsp;框架也就孕育而生了，现在市面上主流的框架有 OrmLite、SugarORM、Active Android、Realm 与 GreenDAO。而今天的主角便是&nbsp;greenDAO，下面，我将详解地介绍如何在&nbsp;Android Studio&nbsp;上使用&nbsp;greenDAO，并结合代码总结一些使用过程中的心得。 </p>
+<hr>
+<h2 id="articleHeader1">关于 greenDAO </h2>
+<p><img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143445_524.png" width="640" height="184"> </p>
+<p>简单的讲，greenDAO 是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案。（greenDAO is a light &amp; fast ORM solution that maps objects to SQLite databases.）&nbsp;<br>
+而关于 ORM （Object Relation Mapping - 对象关系映射）的概念，可参见&nbsp;<a href="https://en.wikipedia.org/wiki/Object-relational_mapping">Wikipedia</a>。 </p>
+<h3 id="articleHeader2">GREENDAO 设计的主要目标 </h3>
+<ul>
+<li>
+<p>一个精简的库 </p>
+</li>
+<li>
+<p>性能最大化 </p>
+</li>
+<li>
+<p>内存开销最小化 </p>
+</li>
+<li>
+<p>易于使用的 APIs </p>
+</li>
+<li>
+<p>对 Android 进行高度优化 </p>
+</li>
+</ul>
+<h3 id="articleHeader3">GREENDAO 设计的主要特点 </h3>
+<ul>
+<li>
+<p>greenDAO 性能远远高于同类的&nbsp;<a href="http://ormlite.com/">ORMLite</a>，具体测试结果可见<a href="http://greendao-orm.com/features/">官网</a> </p>
+</li>
+<li>
+<p>greenDAO 支持&nbsp;<a href="https://github.com/google/protobuf">protocol buffer(protobuf)</a>&nbsp;协议数据的直接存储，如果你通过 protobuf 协议与服务器交互，将不需要任何的映射。 </p>
+</li>
+<li>
+<p>与 ORMLite 等使用注解方式的 ORM 框架不同，greenDAO 使用「Code generation」的方式，这也是其性能能大幅提升的原因。 </p>
+</li>
+</ul>
+<h3 id="articleHeader4">DAO CODE GENERATION PROJECT </h3>
+<p><img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143447_44.png" width="640" height="310"> </p>
+<p>这是其核心概念：为了在我们的 Android 工程中使用 greenDAO ，我们需要另建一个纯 Java Project，用于自动生成后继 Android 工程中需要使用到的 Bean、DAO、DaoMaster、DaoSession 等类。 </p>
+<h3 id="articleHeader5">CORE CLASSES &amp; MODELLING ENTITIES </h3>
+<p>关于以上几个类的相关概念与作用，我将在下面的代码（注释）中详细讲解。<br>
+当然，你也可以在&nbsp;<a href="http://greendao-orm.com/documentation/introduction/">官网</a>&nbsp;中找到相关介绍。 </p>
+<hr>
+<h2 id="articleHeader6">让我们开始吧 </h2>
+<h3 id="articleHeader7">一. 在 ANDROID 工程中配置「GREENDAO GENERATOR」模块 </h3>
+<ol>
+<li>
+<p>在 .src/main 目录下新建一个与 java 同层级的「java-gen」目录，用于存放由 greenDAO 生成的 Bean、DAO、DaoMaster、DaoSession 等类。&nbsp;<br>
+<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143449_15.png" width="766" height="413"><img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143457_527.png" width="700" height="274"> </p>
+</li>
+<li>
+<p>配置 Android 工程（app）的 build.gradle，如图分别添加&nbsp;<a href="https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html">sourceSets</a>&nbsp;与<a href="https://docs.gradle.org/1.8-rc-1/userguide/dependency_management.html">dependencies</a>。&nbsp;<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143458_372.png" width="816" height="620"> </p>
+</li>
+</ol>
+<pre class="brush:js;toolbar:false">sourceSets&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java.srcDirs&nbsp;=&nbsp;['src/main/java',&nbsp;'src/main/java-gen']
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre><pre class="brush:js;toolbar:false">compile&nbsp;'de.greenrobot:greendao:1.3.7'</pre> <h3 style="background-color:#ffffff;font-family:Raleway, sans-serif;color:#1e1e1f;font-size:20px;font-weight:500;"><br>
+</h3>
+<h3 id="articleHeader9">二. 新建「GREENDAO GENERATOR」模块 (纯 JAVA 工程） </h3>
+<ol>
+<li>
+<p>通过 File -&gt; New -&gt; New Module -&gt; Java Library -&gt; 填写相应的包名与类名 -&gt; Finish.<br>
+<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143503_418.png" width="791" height="456"><img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143506_964.png" width="789" height="654"><img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143507_873.png" width="744" height="617"> </p>
+</li>
+<li>
+<p>配置 daoexamplegenerator 工程的 build.gradle，添加 dependencies. </p>
+</li>
+<li>
+<p>&nbsp;<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143508_786.png" width="728" height="238"> </p>
+</li>
+</ol>
+<pre class="brush:js;toolbar:false">compile&nbsp;'de.greenrobot:greendao-generator:1.3.1'</pre> <ol>
+<li>
+<p>编写&nbsp;ExampleDaoGenerator&nbsp;类，注意： 我们的 Java 工程只有一个类，它的内容决定了「GreenDao Generator」的输出，你可以在这个类中通过对象、关系等创建数据库结构，下面我将以注释的形式详细讲解代码内容。 </p>
+</li>
+</ol>
+<pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;ExampleDaoGenerator&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;throws&nbsp;Exception&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;正如你所见的，你创建了一个用于添加实体（Entity）的模式（Schema）对象。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;两个参数分别代表：数据库版本号与自动生成代码的包路径。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schema&nbsp;schema&nbsp;=&nbsp;new&nbsp;Schema(1,&nbsp;"me.itangqi.greendao");
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，如果你愿意，你也可以分别指定生成的&nbsp;Bean&nbsp;与&nbsp;DAO&nbsp;类所在的目录，只要如下所示：
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schema&nbsp;schema&nbsp;=&nbsp;new&nbsp;Schema(1,&nbsp;"me.itangqi.bean");
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;schema.setDefaultJavaPackageDao("me.itangqi.dao");
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;模式（Schema）同时也拥有两个默认的&nbsp;flags，分别用来标示&nbsp;entity&nbsp;是否是&nbsp;activie&nbsp;以及是否使用&nbsp;keep&nbsp;sections。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;schema2.enableActiveEntitiesByDefault();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;schema2.enableKeepSectionsByDefault();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;一旦你拥有了一个&nbsp;Schema&nbsp;对象后，你便可以使用它添加实体（Entities）了。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addNote(schema);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;最后我们将使用&nbsp;DAOGenerator&nbsp;类的&nbsp;generateAll()&nbsp;方法自动生成代码，此处你需要根据自己的情况更改输出目录（既之前创建的&nbsp;java-gen)。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;其实，输出目录的路径可以在&nbsp;build.gradle&nbsp;中设置，有兴趣的朋友可以自行搜索，这里就不再详解。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;DaoGenerator().generateAll(schema,&nbsp;"/Users/tangqi/android-dev/AndroidStudioProjects/MyGreenDAO/app/src/main/java-gen");
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;schema
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;void&nbsp;addNote(Schema&nbsp;schema)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;一个实体（类）就关联到数据库中的一张表，此处表名为「Note」（既类名）
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entity&nbsp;note&nbsp;=&nbsp;schema.addEntity("Note");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;你也可以重新给表命名
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;note.setTableName("NODE");
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;greenDAO&nbsp;会自动根据实体类的属性值来创建表字段，并赋予默认值
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;接下来你便可以设置表中的字段：
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note.addIdProperty();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note.addStringProperty("text").notNull();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;与在&nbsp;Java&nbsp;中使用驼峰命名法不同，默认数据库中的命名是使用大写和下划线来分割单词的。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;For&nbsp;example,&nbsp;a&nbsp;property&nbsp;called&nbsp;“creationDate”&nbsp;will&nbsp;become&nbsp;a&nbsp;database&nbsp;column&nbsp;“CREATION_DATE”.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note.addStringProperty("comment");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;note.addDateProperty("date");
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre> <h3 id="articleHeader10">三. 生成 DAO 文件（数据库） </h3>
+<ul>
+<li>
+<p>执行 generator 工程，如一切正常，你将会在控制台看到如下日志，并且在主工程「java-gen」下会发现生成了DaoMaster、DaoSession、NoteDao、Note共4个类文件。&nbsp;<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143508_316.png" width="682" height="200"> </p>
+</li>
+</ul>
+<p>如果在此处出错，你可以依据错误日志进行排查，主要看是否输出目录存在？其他配置是否正确？等 </p>
+<h3 id="articleHeader11">四. 在 ANDROID 工程中进行数据库操作 </h3>
+<p>这里，我们只创建一个 NodeActivity 类，用于测试与讲解 greenDAO 的增、删、查功能。 </p>
+<ul>
+<li>
+<p>activity_note.xml </p>
+</li>
+</ul>
+<pre class="brush:js;toolbar:false">&lt;?xml&nbsp;version="1.0"&nbsp;encoding="utf-8"?&gt;
+&lt;LinearLayout&nbsp;xmlns:android="http://schemas.android.com/apk/res/android"
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="fill_parent"
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="fill_parent"
+&nbsp;&nbsp;&nbsp;&nbsp;android:orientation="vertical"&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;LinearLayout
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@+id/linearLayout1"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="fill_parent"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:orientation="horizontal"&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EditText
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@+id/editTextNote"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_weight="1"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:hint="Enter&nbsp;new&nbsp;note"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:inputType="text"&gt;&lt;/EditText&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Button
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@+id/buttonAdd"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:onClick="onMyButtonClick"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:text="Add"&gt;&lt;/Button&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Button
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@+id/buttonSearch"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:onClick="onMyButtonClick"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:text="Search"&gt;&lt;/Button&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LinearLayout&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ListView
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@android:id/list"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="fill_parent"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content"&gt;&lt;/ListView&gt;
+&lt;/LinearLayout&gt;</pre> <ul style="background-color:#ffffff;font-family:Merriweather, serif;color:#424143;font-size:18px;">
+<li>
+<p>NoteActivity.java </p>
+</li>
+</ul>
+<pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;NoteActivity&nbsp;extends&nbsp;ListActivity&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;SQLiteDatabase&nbsp;db;
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;EditText&nbsp;editText;
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;DaoMaster&nbsp;daoMaster;
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;DaoSession&nbsp;daoSession;
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Cursor&nbsp;cursor;
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;final&nbsp;String&nbsp;TAG&nbsp;=&nbsp;"DaoExample";
+
+&nbsp;&nbsp;&nbsp;&nbsp;@Override
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onCreate(Bundle&nbsp;savedInstanceState)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.onCreate(savedInstanceState);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setContentView(R.layout.activity_note);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;官方推荐将获取&nbsp;DaoMaster&nbsp;对象的方法放到&nbsp;Application&nbsp;层，这样将避免多次创建生成&nbsp;Session&nbsp;对象
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setupDatabase();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;获取&nbsp;NoteDao&nbsp;对象
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getNoteDao();
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;textColumn&nbsp;=&nbsp;NoteDao.Properties.Text.columnName;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;orderBy&nbsp;=&nbsp;textColumn&nbsp;+&nbsp;"&nbsp;COLLATE&nbsp;LOCALIZED&nbsp;ASC";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor&nbsp;=&nbsp;db.query(getNoteDao().getTablename(),&nbsp;getNoteDao().getAllColumns(),&nbsp;null,&nbsp;null,&nbsp;null,&nbsp;null,&nbsp;orderBy);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;from&nbsp;=&nbsp;{textColumn,&nbsp;NoteDao.Properties.Comment.columnName};
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;to&nbsp;=&nbsp;{android.R.id.text1,&nbsp;android.R.id.text2};
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleCursorAdapter&nbsp;adapter&nbsp;=&nbsp;new&nbsp;SimpleCursorAdapter(this,&nbsp;android.R.layout.simple_list_item_2,&nbsp;cursor,&nbsp;from,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setListAdapter(adapter);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;editText&nbsp;=&nbsp;(EditText)&nbsp;findViewById(R.id.editTextNote);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;setupDatabase()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;通过&nbsp;DaoMaster&nbsp;的内部类&nbsp;DevOpenHelper，你可以得到一个便利的&nbsp;SQLiteOpenHelper&nbsp;对象。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;可能你已经注意到了，你并不需要去编写「CREATE&nbsp;TABLE」这样的&nbsp;SQL&nbsp;语句，因为&nbsp;greenDAO&nbsp;已经帮你做了。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;注意：默认的&nbsp;DaoMaster.DevOpenHelper&nbsp;会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DaoMaster.DevOpenHelper&nbsp;helper&nbsp;=&nbsp;new&nbsp;DaoMaster.DevOpenHelper(this,&nbsp;"notes-db",&nbsp;null);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;db&nbsp;=&nbsp;helper.getWritableDatabase();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;注意：该数据库连接属于&nbsp;DaoMaster，所以多个&nbsp;Session&nbsp;指的是相同的数据库连接。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;daoMaster&nbsp;=&nbsp;new&nbsp;DaoMaster(db);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;daoSession&nbsp;=&nbsp;daoMaster.newSession();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NoteDao&nbsp;getNoteDao()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;daoSession.getNoteDao();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Button&nbsp;点击的监听事件
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;view
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onMyButtonClick(View&nbsp;view)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(view.getId())&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;R.id.buttonAdd:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addNote();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;R.id.buttonSearch:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log.d(TAG,&nbsp;"what&nbsp;has&nbsp;gone&nbsp;wrong&nbsp;?");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;addNote()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;noteText&nbsp;=&nbsp;editText.getText().toString();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;editText.setText("");
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;DateFormat&nbsp;df&nbsp;=&nbsp;DateFormat.getDateTimeInstance(DateFormat.MEDIUM,&nbsp;DateFormat.MEDIUM);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;comment&nbsp;=&nbsp;"Added&nbsp;on&nbsp;"&nbsp;+&nbsp;df.format(new&nbsp;Date());
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;插入操作，简单到只要你创建一个&nbsp;Java&nbsp;对象
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note&nbsp;note&nbsp;=&nbsp;new&nbsp;Note(null,&nbsp;noteText,&nbsp;comment,&nbsp;new&nbsp;Date());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getNoteDao().insert(note);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log.d(TAG,&nbsp;"Inserted&nbsp;new&nbsp;note,&nbsp;ID:&nbsp;"&nbsp;+&nbsp;note.getId());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor.requery();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;void&nbsp;search()&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Query&nbsp;类代表了一个可以被重复执行的查询
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Query&nbsp;query&nbsp;=&nbsp;getNoteDao().queryBuilder()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.where(NoteDao.Properties.Text.eq("Test1"))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.orderAsc(NoteDao.Properties.Date)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.build();
+
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询结果以&nbsp;List&nbsp;返回
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;notes&nbsp;=&nbsp;query.list();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;在&nbsp;QueryBuilder&nbsp;类中内置两个&nbsp;Flag&nbsp;用于方便输出执行的&nbsp;SQL&nbsp;语句与传递参数的值
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QueryBuilder.LOG_SQL&nbsp;=&nbsp;true;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QueryBuilder.LOG_VALUES&nbsp;=&nbsp;true;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+
+&nbsp;&nbsp;&nbsp;&nbsp;/**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;ListView&nbsp;的监听事件，用于删除一个&nbsp;Item
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;l
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;v
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;position
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;id
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp;@Override
+&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;void&nbsp;onListItemClick(ListView&nbsp;l,&nbsp;View&nbsp;v,&nbsp;int&nbsp;position,&nbsp;long&nbsp;id)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;删除操作，你可以通过「id」也可以一次性删除所有
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getNoteDao().deleteByKey(id);
+//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getNoteDao().deleteAll();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log.d(TAG,&nbsp;"Deleted&nbsp;note,&nbsp;ID:&nbsp;"&nbsp;+&nbsp;id);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor.requery();
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre> <h3 id="articleHeader12">五. 运行结果 </h3>
+<p>一切就绪，让我们看看效果吧！运行程序，分别执行添加按钮、删除（点击 List 的 Item）与查询按钮，可以在控制台得到如下日志：<br>
+<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143510_294.png" width="500" height="821">&nbsp;<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143510_598.png" width="500" height="829">&nbsp;<img style="border-bottom:0px;border-left:0px;border-top:0px;border-right:0px;" alt="Android ORM 框架之 greenDAO 使用心得" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/20150728143511_784.png" width="822" height="118"> </p>
+<h2 id="articleHeader13">最后 </h2>
+<ul>
+<li>
+<p>本文的 Demo 下载链接：<a href="https://github.com/tangqi92/MyGreenDAO">https://github.com/tangqi92/MyGreenDAO</a> </p>
+</li>
+<li>
+<p>本教程旨在介绍 greenDAO 的基本用法与配置，更高级与详细的使用，请参见&nbsp;<a href="http://greendao-orm.com/">官网</a> </p>
+</li>
+<li>
+<p>如本文有任何错误与遗漏，欢迎指正。同时我期待与大家成为朋友，所以欢迎在社交网络上互粉！！！ </p>
+</li>
+</ul>
+<h2 id="articleHeader14">References &amp; More </h2>
+<p><a href="http://greendao-orm.com/">http://greendao-orm.com/</a>&nbsp;<a href="https://github.com/greenrobot/greenDAO">https://github.com/greenrobot/greenDAO</a><a href="http://stackoverflow.com/questions/tagged/greendao">http://stackoverflow.com/questions/tagged/greendao</a><a href="https://groups.google.com/forum/#!forum/greendao">https://groups.google.com/forum/#!forum/greendao</a> </p>
+<p><br>
+</p>
+				</article>
+
+
+
+
+		
+
+
+
+		</div>
+
+
+
+	<div class="col-md-3">
+		<div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1464134563095">
+			<a href="http://www.open-open.com/lib/view/open1438065400878.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+			<a href="http://www.open-open.com/lib/view/open1438065400878.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			<a href="http://www.open-open.com/lib/view/open1438065400878.html#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+			<a href="http://www.open-open.com/lib/view/open1438065400878.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+			<a href="http://www.open-open.com/lib/view/open1438065400878.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+
+		</div>
+
+		<div class=" side-box" style="margin-top: 20px;">
+				<div class="title"><h3>同类热门经验</h3></div>
+				<ol class="hot">
+					
+						<li>
+							<a title="上百个Android开源项目分享" href="http://www.open-open.com/lib/view/open1328063267889.html"><span class="title">上百个Android开源项目分享</span></a>
+						</li>
+					
+						<li>
+							<a title="android" json解析及简单例子="" href="http://www.open-open.com/lib/view/open1326376799874.html"><span class="title">android json解析及简单例子</span></a>
+						</li>
+					
+						<li>
+							<a title="Android" 软件自动更新功能的实现="" href="http://www.open-open.com/lib/view/open1322529319718.html"><span class="title">Android 软件自动更新功能的实现</span></a>
+						</li>
+					
+						<li>
+							<a title="自定义" android="" 对话框="" (alertdialog)="" 的样式="" href="http://www.open-open.com/lib/view/open1325635738437.html"><span class="title">自定义 Android 对话框 (AlertDialog) 的样式</span></a>
+						</li>
+					
+						<li>
+							<a title="adb" shell="" 命令详解="" href="http://www.open-open.com/lib/view/open1327557366686.html"><span class="title">adb shell 命令详解</span></a>
+						</li>
+					
+						<li>
+							<a title="android定位和地图开发实例" href="http://www.open-open.com/lib/view/open1328756009421.html"><span class="title">android定位和地图开发实例 </span></a>
+						</li>
+					
+
+				</ol>
+			</div>
+		<p class="aiBar"></p>
+		<div class="side-box post-nav aside-fixed" style="margin-top: 20px;">
+			<div class="title"><h3>阅读目录</h3></div>
+			<ul class="articleIndex"><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader0">前言</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader1">关于 greenDAO</a></li><li style="list-style:none;"><ul><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader2">GREENDAO 设计的主要目标</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader3">GREENDAO 设计的主要特点</a></li><li class="active"><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader4">DAO CODE GENERATION PROJECT</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader5">CORE CLASSES &amp; MODELLING ENTITIES</a></li></ul></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader6">让我们开始吧</a></li><li style="list-style:none;"><ul><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader7">一. 在 ANDROID 工程中配置「GREENDAO GENERATOR」模块</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader9">二. 新建「GREENDAO GENERATOR」模块 (纯 JAVA 工程）</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader10">三. 生成 DAO 文件（数据库）</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader11">四. 在 ANDROID 工程中进行数据库操作</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader12">五. 运行结果</a></li></ul></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader13">最后</a></li><li class=""><a href="http://www.open-open.com/lib/view/open1438065400878.html#articleHeader14">References &amp; More</a></li></ul>
+		</div>
+
+	</div>
+
+
+
+</div>
+	</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<table width="100%"><tbody><tr>
+				<td valign="top" width="33%" class="Relatedb">
+					<div style="border-bottom: 1px #ccc solid;margin-top: 5px"><strong>相关文档</strong> 　—　<a href="http://www.open-open.com/doc" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li><a href="http://www.open-open.com/doc/view/02656aaf0e884e25b945ffb978cf0653" rel="nofollow" target="_blank" title="Android应用框架原理与程序设计36技(高焕堂著、简体版).pdf">Android应用框架原理与程序设计36技(高焕堂著、简体版).pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/c67014c265af4e59b5ac17f6d2eaadf2" rel="nofollow" target="_blank" title="我的orm(二) - 兼容不同的数据库.doc">我的orm(二) - 兼容不同的数据库.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/c5d1b46e3523431aa0d5c40ae703d4f1" rel="nofollow" target="_blank" title="最基本的hibernate3.3.2之 jar包.docx">最基本的hibernate3.3.2之 jar包.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/143dfb30b6ce448fbea2c1c64a00ff3b" rel="nofollow" target="_blank" title="网校网JFinal极速 WEB ORM 开发框架.doc">网校网JFinal极速 WEB ORM 开发框架.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/91415426178a4874b1c3ad06452a3755" rel="nofollow" target="_blank" title="Android 高级开发实战培训.ppt">Android 高级开发实战培训.ppt</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/242370590f2c4fecbf74e31e76b07b8a" rel="nofollow" target="_blank" title="Android游戏开发系列博文.chm">Android游戏开发系列博文.chm</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/9d929ffc396247779a656e74c423b264" rel="nofollow" target="_blank" title=".NET平台下的ORM框架介绍.doc">.NET平台下的ORM框架介绍.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/daeeb3ffb9184e8288901f756146b803" rel="nofollow" target="_blank" title="Android Basic.ppt">Android Basic.ppt</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/437f9916347c4a078b9d06dececf6473" rel="nofollow" target="_blank" title="Android 开发之应用程序框架.doc">Android 开发之应用程序框架.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/a23d7f8465d2441697e7673a948ff021" rel="nofollow" target="_blank" title="Android应用框架原理与程序设计36技(高焕堂着、简体版).pdf">Android应用框架原理与程序设计36技(高焕堂着、简体版).pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/65571880439c4c90b89c89a099041932" rel="nofollow" target="_blank" title="Hibernate ORM 操作流程 (oracle).doc">Hibernate ORM 操作流程 (oracle).doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/7a49852761ec4d64a09a62b55cff3f01" rel="nofollow" target="_blank" title="android框架代码.docx">android框架代码.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/f5aea3b7dd284a0bbfb95014ea095b4e" rel="nofollow" target="_blank" title="我的ORM(一) - 重复造轮子.doc">我的ORM(一) - 重复造轮子.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/32cb35f800dc4a1691cbd3f83437eee5" rel="nofollow" target="_blank" title="Dapper ORM 用法—Net下无敌的ORM.docx">Dapper ORM 用法—Net下无敌的ORM.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/7d83e6e18a004622bd38e0c5d5523091" rel="nofollow" target="_blank" title="Doctrin ORM for PHP 指南.pdf">Doctrin ORM for PHP 指南.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/1c46a940644940cd966bdff8dba69c5a" rel="nofollow" target="_blank" title="Android Spinner 使用.docx">Android Spinner 使用.docx</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/638de3fb187244158b6406305a4c56de" rel="nofollow" target="_blank" title="Android 控件使用示例.doc">Android 控件使用示例.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/af0b72df460445578a30881d77dce994" rel="nofollow" target="_blank" title="李亮 - iOS 和 Android 多平台开发的经验与心得.pdf">李亮 - iOS 和 Android 多平台开发的经验与心得.pdf</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/5ebddbde1e8446f7b929b5d7ea49eca4" rel="nofollow" target="_blank" title="Android JNI使用及封装.doc">Android JNI使用及封装.doc</a></li>
+						
+							<li><a href="http://www.open-open.com/doc/view/22b53dfeb1494025b86347f8fa2908ed" rel="nofollow" target="_blank" title="Android 产品框架定义.pdf">Android 产品框架定义.pdf</a></li>
+						
+					</ul>
+				</td>
+				<td valign="top" width="33%" class="Relatedb">
+					<div style="border-bottom: 1px #ccc solid;margin-top: 5px"><strong>相关经验</strong> 　—　<a href="http://www.open-open.com/lib" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li>
+								<a title="Android" tips="" -="" 专业填坑手册="" href="http://www.open-open.com/lib/view/open1442234101883.html" target="_blank"><span class="title"> Android Tips - 专业填坑手册</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android的ORM框架：greenDAO" href="http://www.open-open.com/lib/view/open1369378371295.html" target="_blank"><span class="title">Android的ORM框架：greenDAO</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android" 开发中的日常积累="" href="http://www.open-open.com/lib/view/open1443345966107.html" target="_blank"><span class="title"> Android 开发中的日常积累 </span></a>
+
+							</li>
+						
+							<li>
+								<a title="配置使用Android数据库开源框架GreenDao" href="http://www.open-open.com/lib/view/open1428723369250.html" target="_blank"><span class="title">配置使用Android数据库开源框架GreenDao</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android端ORM框架：RapidORM" href="http://www.open-open.com/lib/view/open1440164379145.html" target="_blank"><span class="title">Android端ORM框架：RapidORM</span></a>
+
+							</li>
+						
+							<li>
+								<a title="快速入门GreenDao框架并实现增删改查案例" href="http://www.open-open.com/lib/view/open1463058415543.html" target="_blank"><span class="title">快速入门GreenDao框架并实现增删改查案例</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android" 快速开发系列之数据库篇="" href="http://www.open-open.com/lib/view/open1462526887512.html" target="_blank"><span class="title">Android 快速开发系列之数据库篇</span></a>
+
+							</li>
+						
+							<li>
+								<a title="使用GreenDao实现本地Sqlite缓存" href="http://www.open-open.com/lib/view/open1453552093026.html" target="_blank"><span class="title"> 使用GreenDao实现本地Sqlite缓存</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android开源项目大全" -="" 工具类="" href="http://www.open-open.com/lib/view/open1389949549882.html" target="_blank"><span class="title">Android开源项目大全 - 工具类</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android开源工具库" href="http://www.open-open.com/lib/view/open1388479529516.html" target="_blank"><span class="title">Android开源工具库</span></a>
+
+							</li>
+						
+							<li>
+								<a title="使用最新最酷的Android开发技术" href="http://www.open-open.com/lib/view/open1447490244803.html" target="_blank"><span class="title">使用最新最酷的Android开发技术</span></a>
+
+							</li>
+						
+							<li>
+								<a title="GitHub上最火的74个Android开源项目（三）" href="http://www.open-open.com/lib/view/open1388317075000.html" target="_blank"><span class="title">GitHub上最火的74个Android开源项目（三）</span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android开源库集锦" href="http://www.open-open.com/lib/view/open1388231274813.html" target="_blank"><span class="title">Android开源库集锦 </span></a>
+
+							</li>
+						
+							<li>
+								<a title="Android开源框架分类" href="http://www.open-open.com/lib/view/open1441115923925.html" target="_blank"><span class="title">Android开源框架分类</span></a>
+
+							</li>
+						
+					</ul>
+				</td>
+				<td valign="top" width="33%" class="Relatedb">
+					<div style="border-bottom: 1px #ccc solid;margin-top: 5px"><strong>相关讨论</strong> 　—　<a href="http://www.open-open.com/solution" rel="nofollow" target="_blank">更多</a></div>
+					<ul>
+						
+							<li>
+								<a title="PHP" 的="" orm="" 框架="" doctrine="" href="http://www.open-open.com/solution/view/1319457002140" rel="nofollow" target="_blank"><span class="title"> PHP 的 ORM 框架 Doctrine </span></a>
+							</li>
+						
+							<li>
+								<a title="一个开源ORM框架" kauklahti="" href="http://www.open-open.com/solution/view/1319457190046" rel="nofollow" target="_blank"><span class="title">一个开源ORM框架 Kauklahti </span></a>
+							</li>
+						
+							<li>
+								<a title="Android核心模块内容概述" href="http://www.open-open.com/solution/view/1318333423124" rel="nofollow" target="_blank"><span class="title">Android核心模块内容概述</span></a>
+							</li>
+						
+							<li>
+								<a title="delphi上的一个不错的ORM框架" instantobjects="" href="http://www.open-open.com/solution/view/1319456861780" rel="nofollow" target="_blank"><span class="title">delphi上的一个不错的ORM框架 InstantObjects</span></a>
+							</li>
+						
+							<li>
+								<a title="android" 2.3="" strictmode="" 使用="" href="http://www.open-open.com/solution/view/1319762738046" rel="nofollow" target="_blank"><span class="title">android 2.3 StrictMode 使用</span></a>
+							</li>
+						
+							<li>
+								<a title="Android:" sms="" tel="" mail="" 使用集合="" href="http://www.open-open.com/solution/view/1319464820140" rel="nofollow" target="_blank"><span class="title">Android: SMS TEL MAIL 使用集合 </span></a>
+							</li>
+						
+							<li>
+								<a title="Android" 自定义="" view="" 的使用="" href="http://www.open-open.com/solution/view/1319461058765" rel="nofollow" target="_blank"><span class="title">Android 自定义 View 的使用</span></a>
+							</li>
+						
+					</ul>
+				</td>
+			</tr></tbody></table>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+<style>
+	footer{background-color: #fff;
+		border-top: 1px solid rgba(230, 230, 230, 0.75);
+		margin-top: 20px;
+		padding: 20px 0;}
+</style>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-4" style="line-height: 60px;">
+				<span>©2006-2016 深度开源 </span>
+			</div>
+			<div class="col-md-4 col-xs-4 text-center"><span>
+				<a rel="nofollow" href="http://www.open-open.com/" class="brightbox-logo"><img src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/logo-icon.png"></a>
+			</span></div>
+			<div class="col-md-4 col-xs-4" style="line-height: 60px;">
+				 <a target="_blank" href="http://www.miibeian.gov.cn/">浙ICP备09019653号-31</a>
+				<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257892335'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257892335' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1257892335"><a href="http://www.cnzz.com/stat/website.php?web_id=1257892335" target="_blank" title="站长统计">站长统计</a></span><script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/z_stat.php" type="text/javascript"></script><script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/core.php" charset="utf-8" type="text/javascript"></script>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery.min.js"></script>
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery-confirm.js"></script>
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/app.js"></script>
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/scrolltopcontrol.js"></script>
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery.contentcarousel.js"></script>
+
+<script type="text/javascript">
+	var rooturl="/lib";
+	var tb_pathToImage = "/lib/images/loadingAnimation.gif";
+	var jc = {};
+	$(function (){
+		$('#ca-container').contentcarousel();
+		$('.login').on('click', function () {
+			jc = $.dialog({
+				title: '&nbsp;',
+				content: '<iframe id="dialog" scrolling="no" style="width:100%;border:none;height:300px;" src="/lib/members/login?keepThis=true&TB_iframe=true&height=177&width=280"></iframe>',
+				animation: 'top',
+				columnClass: 'col-md-5 col-md-offset-3',
+				closeAnimation: 'top',
+				backgroundDismiss: true
+			});
+		});
+		$('.register').on('click', function () {
+			jc = $.dialog({
+				title: '&nbsp;',
+				content: '<iframe id="dialog" scrolling="no" style="width:100%;border:none;height:460px;" src="/lib/members/register?keepThis=true&TB_iframe=true&height=460&width=460"></iframe>',
+				animation: 'top',
+				columnClass: 'col-md-6 col-md-offset-3',
+				closeAnimation: 'top',
+				backgroundDismiss: true
+			});
+		});
+
+
+	});
+
+
+</script>
+
+<script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery-ui.min.js"></script>
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/scrolltopcontrol.js"></script>
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/view.js"></script>
+
+<script type="text/javascript" src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/jquery.jgrowl_minimized.js"></script>
+
+<script type="text/javascript">
+	scrolltotop.offset(95,165);
+	scrolltotop.init();
+</script>
+<script src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();
+
+	(function(){
+		var c = new contentIndex();
+		c("article", ".articleIndex");
+		setAIActive();
+
+
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > $(".aiBar").offset().top) {
+				$(".post-nav").addClass("aside-fixed");
+//          console.log($(window).scrollTop());
+			} else {
+//           console.log($(window).scrollTop());
+				$(".post-nav").removeClass("aside-fixed");
+			}
+		});
+		$("#readercontainer img").each(function(index, element) {
+			var $width=$("#readercontainer article").width();
+			if ( this.width>$width) {
+
+				this.height = this.height*$width/this.width;
+				this.width=$width;
+			}
+		});
+
+	})();
+</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		bp.src = '//push.zhanzhang.baidu.com/push.js';
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable" tabindex="-1" role="dialog" aria-describedby="favorite-box" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">收藏提示</span><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" title="Close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">Close</span></button></div><div id="favorite-box" class="ui-dialog-content ui-widget-content" style="display: block;">
+						<table>
+							<tbody>
+							<tr>
+								<td width="70" align="right">文件夹</td>
+								<td><select id="fav_folderlist" name="folder">
+									<option selected="" value="0">请选择...</option>
+									<option id="newfolder-sp" disabled="" value="">-------------</option>
+									<option value="-1">新增文件夹...</option>
+								</select></td>
+							</tr>
+							<tr style="display: none" id="newfolder-input">
+								<td align="right">新增文件夹</td>
+								<td><input id="fav_newfolder" maxlength="50" type="text" name="newfolder"></td>
+							</tr>
+							<tr>
+								<td align="right">标签</td>
+								<td><input id="fav_tags" maxlength="135" size="20" type="text" name="tags"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td colspan="2">(多个标签用逗号分隔)</td>
+							</tr>
+							</tbody>
+						</table>
+					</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">取消</span></button><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">确认</span></button></div></div></div><div id="topcontrol" title="回到顶部" style="position: fixed; bottom: 165px; right: 95px; cursor: pointer; display: block;"><img src="./Android ORM 框架之 greenDAO 使用心得 - OPEN 开发经验库_files/gotop.gif" style="width:35px; height:35px;"></div></body></html>

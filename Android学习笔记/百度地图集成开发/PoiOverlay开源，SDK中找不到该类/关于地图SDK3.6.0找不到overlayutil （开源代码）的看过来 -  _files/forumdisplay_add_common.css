@@ -1,0 +1,366 @@
+@CHARSET "UTF-8";
+
+/*面包屑导航栏----开始---*/
+.z a:hover {
+	text-decoration: none;
+	color: #10ACE6;
+}
+/*面包屑导航栏----结束---*/
+
+/*版块页 ---版块主体----开始*/
+.moduleMain {
+	border-top: 1px solid #20B3E9;
+	border-left: 3px solid #20B3E9;
+	border-right: 3px solid #20B3E9;
+	border-bottom: 1px solid #20B3E9;
+	background: #DDF6FF;
+	height: 140px;
+}
+
+.forumdisplay_xs2 {
+	padding-top: 20px;
+	padding-left: 23px;
+}
+
+.forumdisplay_xs2 a {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.forumdisplay_xs2 img {
+	height: 12px;
+}
+
+#forum_name {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.posts_threads {
+	margin: 20px 0 0 23px;
+}
+
+#number_favorite_num {
+	color: #11ACE5;
+	font-weight: bold;
+}
+
+.forumdisplay_xs2 span {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: black;
+}
+
+.forum_modedby {
+	margin-top: 0px;
+	padding-left: 13px;
+	padding-bottom: 10px;
+}
+
+.forumdisplay_post {
+	padding: 50px 40px 0 0;
+}
+/*版块页 ---版块主体----结束*/
+.mn  .moduleIntro {
+	border-top: 3px solid #20B3E9;
+	background: #F9F9F9;
+}
+
+.moduleIntro  p {
+	font-family: "微软雅黑";
+	padding: 5px 0 5px 13px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #20B3E9;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.moduleIntro_detail {
+	font-family: "微软雅黑";
+	padding: 5px 5px 10px 13px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.forumdisplay_announcement {
+	background: #FDF8E4;
+	border-top: 1px solid #FAEBCC;
+	border-left: 1px solid #FAEBCC;
+	border-right: 1px solid #FAEBCC;
+	border-bottom: 1px solid #FAEBCC;
+	height: 25px;
+	font-family: "微软雅黑";
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+	color: #E3962E;
+}
+
+.forumdisplay_announcement a {
+	color: #E3962E;
+	font-size: 12px;
+}
+
+/*主题筛选区---开始*/
+.forumdisplay_threadTypes {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: black;
+	height: 45px;
+	background: #FAFAFA;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-top: 3px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	padding-top: 10px;
+}
+
+.forumdisplay_threadTypes li {
+	width: 100px;
+	height: 30px;
+	float: left;
+	border: none;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.forumdisplay_threadTypes li a:hover {
+	color: #0199DA;
+}
+
+#threadtypesmenu:HOVER{ 
+   color: #0199DA;
+   cursor: pointer;
+}
+
+#threadtypesmenu_menu {
+	width: 118px;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+	border-top: 1px solid #CDCDCD;
+	border-bottom: 1px solid #CDCDCD;
+	background: white;
+}
+
+#threadtypesmenu_menu  ul li {
+    height: 24px;
+	width: 98px;
+	text-align: left;
+	padding-left: 20px;
+	border-bottom: 1px solid #CDCDCD;
+	font-size: 12px;
+}
+
+#threadtypesmenu_menu  ul li a {
+        height: 14px;
+        width: 108px;
+        display: block;
+}
+
+#threadtypesmenu_menu  ul li a:HOVER {
+        cursor: pointer;
+}
+
+
+#threadtypes_param {
+	background: #F9F9F9;
+	height: 75px;
+	border-left: 1px solid #CDCDCD;
+	border-right: 1px solid #CDCDCD;
+}
+
+#threadtypes_param #newspecial_thread {
+	float: right;
+	margin: 20px 20px 0 0;
+}
+
+#param_time,#param_access,#heat_thread,#heatdigest_thread {
+	float: left;
+	margin: 25px 10px 0 20px;
+}
+/*主题筛选区---结束*/
+
+/*帖子列表---开始*/
+.tl .num {
+        width: 110px;
+}
+
+#threadlist {
+	width: 728px;
+	background: #ffffff;
+}
+
+#threadlisttableid {
+	padding-left: 7px;
+	padding-right: 5px;
+}
+
+.forumdisplay_threads tr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 90px;
+	border-bottom: 1px solid red;
+}
+
+#threadlisttableid tbody tr {
+	border-bottom: 1px solid red;
+}
+
+.forumdisplay_threads th .xst,.common {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: #555555;
+}
+
+.thread_author,.thread_lastposter {
+	float: left;
+    margin-left:8px;
+    margin-top: 5px;
+	margin-right: 15px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #999999;
+}
+
+.thread_author a,.thread_lastposter a {
+	color: #999999;
+}
+
+.num {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #999999;
+}
+
+.num a {
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: #555555;
+}
+/*帖子列表---结束*/
+
+/*发帖 返回按钮---开始*/
+#newThread_return {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	border-top: 1px dotted #DEDEDE;
+}
+
+#newThread_return .fd_page_bottom {
+	margin-top: 6px;
+	background: red;
+}
+/*发帖 返回按钮---结束*/
+
+/*版块页当前登录用户介绍*/
+#user_introduce {
+	width: 298px;
+	height: 120px;
+	border-top: 3px solid #E5E5E5;
+	border-left: 1px solid #E5E5E5;
+	border-right: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+	margin-bottom: 15px;
+	background: #F4F4F4;
+	font-family: "微软雅黑";
+}
+
+#user_introduce div {
+	float: left;
+	height: 120px;
+}
+
+#user_introduce .user_avatar {
+	width: 80px;
+	padding-left: 20px;
+	padding-right: 10px;
+}
+
+#user_introduce  .user_detailInfo {
+	width: 160px;
+	height: 100px;
+	padding-top: 17px;
+	padding-left: 10px;
+}
+
+#user_introduce ul li {
+	float: left;
+	width: 70px;
+	font-family: "微软雅黑";
+}
+
+#user_introduce ul li a:HOVER {
+	text-decoration: none;
+	color: #10ACE6;
+}
+
+.user_avatar img {
+	width: 70px;
+	height: 70px;
+	text-align: center;
+	margin: 25px 0 25px 5px;
+}
+
+.user_detailInfo #user_name {
+	color: #24A0DC;
+	font-size: 14px;
+	margin-bottom: 6px;
+}
+
+#user_credits {
+	color: #0199DA;
+}
+
+/*板块规则*/
+#forum_rule {
+	width: 298px;
+	border-top: 3px solid #0199DA;
+	border-left: 1px solid #E5E5E5;
+	border-right: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+	margin-bottom: 15px;
+	background: #F4F4F4;
+}
+
+#forum_rule p {
+	text-align: left;
+	width: 283px;
+	height: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	color: #20B3E9;
+	border-bottom: 1px solid #E5E5E5;
+	position: absolute;
+	padding-left: 15px;
+	margin-top: 6px;
+}
+
+#forum_rule  div {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	margin: 40px 15px 20px 15px;
+	line-height: 25px;
+}
+
+/*我的帖子页样式调整----开始*/
+#ct .guide_mn,.guide_threadlist {
+	width: 1050px;
+}
+
+/*我的帖子页样式调整----结束*/
+
+/*我的收藏页/私人消息/帖子消息/模块管理/论坛任务/管理面板页样式调整---开始*/
+.ct2_a .space_mn,.ct2_a .portalcp_mn,.ct2_a .spacecpheader_mn,.ct2_a .modcp_mn
+	{
+	width: 890px;
+}
+/*
+.bm {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+}*/
+/*我的收藏页/私人消息/帖子消息/模块管理/论坛任务/管理面板页样式调整---结束*/

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://finalshares.com/read-6818?from=apkbus-49 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+<title>极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班 </title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="generator" content="phpwind v9.0.1 20151228">
+<meta name="description" content="高质分享+专业互助=没有难做的软件+没有不得已的加班；因为分享，所以简单！">
+<meta name="keywords" content="蓝灯,翻墙,finalshare,极分享,安卓,android,JQuery,Bootstrap,Web,JS，Java,PHP,iOS,python,UI,Spring,SpringMVC,Hibernate,Mybatis,MySQL,NoSQL,工具,架构,运维,源代码,支付,IM,多媒体,网络安全,机器学习,云计算,Docker,炫酷工具,定位导航,大数据,浏览器,跨平台,运营,嵌入式,物联网,开发环境,网络">
+<meta property="qc:admins" content="24333472471430125363757">
+<meta name="others" content="10.252.144.147
+10.252.144.147 =&gt; xx.xx.63.92,
+10.171.238.221 =&gt; xx.xx.102.70,
+">
+<link rel="stylesheet" href="http://finalshares.com/themes/site/biv_viva/css/dev/core.css?v=20151228">
+<link rel="stylesheet" href="http://finalshares.com/themes/site/biv_viva/css/dev/style.css?v=20151228">
+<link rel="stylesheet" href="http://finalshares.com/themes/site/biv_viva/css/dev/font-awesome.min.css?v=20151228">
+<!-- <base id="headbase" href="http://finalshares.com/" /> -->
+<style>body{background-color:#252a30;font-size:16px;font-family:'Microsoft Yahei';color:#0070c0;}a{color:#00b050;}.main .thread_posts_list .st{font-size:16px;}div.editor_content{font-size:16px;}.box_wrap{border-color:#252a30;}</style><script src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/hm.js"></script><script>
+//全局变量 Global Variables
+var GV = {
+	ROOT_DIR      : 'http://finalshares.com',                                               //网站根目录
+	JS_ROOT       : 'http://finalshares.com/res/js/dev/',                                        //js目录
+	JS_VERSION    : '20151228',                                             //js版本号(不能带空格)
+	JS_EXTRES     : 'http://finalshares.com/themes/extres',
+	TOKEN         : '3101bde3af1f7cde', //token $.ajaxSetup data
+	U_CENTER      : 'http://finalshares.com/space-index-run',                                      //用户空间(参数 : uid)
+	U_AVATAR_DEF  : 'http://finalshares.com/res/images/face/face_middle.jpg',                         //默认小头像
+	U_ID          : parseInt('0'),                                 //uid
+	REGION_CONFIG : '',                                                            //地区数据
+	CREDIT_REWARD_JUDGE : '',                //是否积分奖励，空值:false, 1:true
+	URL           : {
+		LOGIN              : 'http://finalshares.com/u-login-run',                                 //登录地址
+		QUICK_LOGIN        : 'http://finalshares.com/u-login-fast',                                //快速登录
+		IMAGE_RES          : 'http://finalshares.com/res/images',                                    //图片目录
+		CHECK_IMG          : 'http://finalshares.com/u-login-showverify',                          //验证码图片url，global.js引用
+		VARIFY             : 'http://finalshares.com/verify-index-get',                            //验证码html
+		VARIFY_CHECK       : 'http://finalshares.com/verify-index-check',                          //验证码html
+		HEAD_MSG           : {
+			LIST : 'http://finalshares.com/message-notice-minilist'                                //头部消息_列表
+		},
+		USER_CARD          : 'http://finalshares.com/space-card-run',                              //小名片(参数 : uid)
+		LIKE_FORWARDING    : 'http://finalshares.com/bbs-post-doreply',                               //喜欢转发(参数 : fid)
+		REGION             : 'http://finalshares.com/misc-webData-area',                           //地区数据
+		SCHOOL             : 'http://finalshares.com/misc-webData-school',                         //学校数据
+		EMOTIONS           : "http://finalshares.com/emotion-index-run?type=bbs",                  //表情数据
+		CRON_AJAX          : '',                                         //计划任务 后端输出执行
+		FORUM_LIST         : 'http://finalshares.com/bbs-forum-list',                              //版块列表数据
+		CREDIT_REWARD_DATA : 'http://finalshares.com/u-index-showcredit',                          //积分奖励 数据
+		AT_URL             : 'http://finalshares.com/bbs-remind-run',                              //@好友列表接口
+		TOPIC_TYPIC        : 'http://finalshares.com/bbs-forum-topictype'                          //主题分类
+	}
+},
+// 模板全局变量
+	//--------------|--------------------------------------------------------------||
+LorSTN = {
+	theme : {
+		name        : 'viva',
+		duty        : 'site',
+		version     : [1,0,5,0],
+		relase      : 20140208,
+		creator     : 'LoR',
+		storePage   : 'http://bivean.com/product/viva/',
+		enc         : 'utf8',
+		sn          : 'phTzh9UA71GUmsDapkjRQOCoFkfGju1pNiWsKuN68l2nLKZX1bxFHDUWVPiOQopMJ3O/BsApllTMzndmxgdigVyhjmE='
+	},
+	res : {
+		loadingPicA : 'http://finalshares.com/themes/site/biv_viva/images/common/loading_fos.gif'
+	},
+	js : {
+		easing      : 'http://finalshares.com/themes/site/biv_viva/js/jquery.easing.js',
+		vivapack    : 'http://finalshares.com/themes/site/biv_viva/js/viva_package.js',
+		vivado      : 'http://finalshares.com/themes/site/biv_viva/js/viva_do.js'
+	},
+	app : {
+		shareto : {
+			AC : 101,
+			ID : 101,
+			IP : 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)
+		}
+	},
+	ieo:{
+		detector:(function(){
+			var a=window.XMLHttpRequest,
+				b=document.documentMode,
+				c=!!("ActiveXObject" in window),
+				d=!!(!-[1,]),
+				e=!!(function(){
+					"use strict";
+					return this===undefined
+				}()),
+				f = 0,g,h,i,j,k,l;
+			if(!c){
+				return false;
+			}
+			else{
+				g=(!a);
+				h=(!!a&&!b);
+				i=(d&&!!b);
+				k=(!d&&(/*@cc_on!@*/false)&&e);
+				l=(!d&&(/*@cc_on!@*/true));
+				j=(!d&&!e&&!(/*@cc_on!@*/true));
+			};
+			f=l?11:(k?10:(j?9:(i?8:(h?7:(g?6:0)))));
+			return f
+		}()),
+		classer:function(b){
+			if(b&&b<10){
+				var a='';
+				for(var i=6;i<=b;i++){
+					a+=i.toString()
+				};
+				document.documentElement.className+=' ie'+a+' ie'+b
+			}
+		},
+		sizer:function(){
+			var e="GSize3",
+				t=document.body.clientWidth;
+			return e=t>1350?e:t>1170?"GSize2":"GSize1"
+		}
+	}
+};
+
+// 检测IE用的变量
+var dtcIE = LorSTN.ieo.detector; 
+LorSTN.ieo.classer(dtcIE);
+</script>
+<script src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/wind.js"></script>
+
+
+	<link href="http://finalshares.com/themes/site/biv_viva/css/dev/forum.css?v=20151228" rel="stylesheet">
+	<link href="http://finalshares.com/res/css/editor_content.css?v=20151228" rel="stylesheet">
+<style>
+.aPre{
+	cursor:url(http://finalshares.com/themes/site/biv_viva/images/common/pre.cur),auto;
+}
+.aNext{
+	cursor:url(http://finalshares.com/themes/site/biv_viva/images/common/next.cur),auto;right:0;
+}
+</style>
+<script src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/share.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/jquery.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/global.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/dialog.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/ajaxForm.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/readAward.js"></script><link rel="stylesheet" href="http://finalshares.com/themes/extres/MedzAward/css/medz.cn.css"><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css"><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/jquery.easing.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/viva_package.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/viva_do.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/userTag.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/read.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/lazyload.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/localStorage.js"></script><script type="text/javascript" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/textCopy.js"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/slide_share.css?v=9c50d088.css"><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/imgshare.css?v=a7830602.css"></head>
+<body><script async="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/c.php"></script><script async="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/c.php"></script><script charset="utf-8" async="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/api.php"></script><script charset="utf-8" async="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/api(1).php"></script>
+<style type="text/css">
+</style><div class="wrap isread" id="isread">
+	<div id="LoR"> <!-- #LoR 开始 -->
+<script type="text/javascript" style="display:none;">
+	(function(){
+		if(dtcIE&&dtcIE<9){
+			var w=(LorSTN.ieo.sizer)(),
+				c=document.body.className;
+				document.body.className=c?(c+" "+w):w;
+		}
+	})();
+</script>
+
+
+<header class="header_wrap">
+	<div id="J_header" class="ga12 clpd1 header cc">
+		<div class="logo">
+			<a href="http://finalshares.com/">
+								<!--后台logo上传-->
+				<img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/logo.png" alt="极分享(finalshares.com)" data-bd-imgshare-binded="1">
+							</a>
+		</div>
+		<div class="header_search" id="J_header_search" role="search">
+			<div class="header_search_mask"></div>
+			<form action="http://finalshares.com/search-s-run" method="post" id="1078559144">
+				<button type="submit" data-langur="searchBtn" aria-label="搜索"><span>搜索</span></button>
+				<input type="text" id="s" aria-label="搜索关键词" accesskey="s" placeholder="输入关键字搜索" name="keyword" onclick="document.getElementById(&#39;J_nav_wrap&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;s&#39;).style.width=&#39;455px&#39;;" onblur="setTimeout(function() { document.getElementById(&#39;s&#39;).style.width=&#39;130px&#39;; document.getElementById(&#39;J_nav_wrap&#39;).style.display=&#39;block&#39;;}, 200);">				
+			<input type="hidden" name="csrf_token" value="3101bde3af1f7cde"><input type="hidden" name="csrf_token" value="3101bde3af1f7cde"></form>
+		</div>
+		<nav class="nav_wrap" id="J_nav_wrap">
+			<div class="nav">
+				<ul>
+						<li class="current"><div class="mask"><span></span><em></em></div><a href="http://finalshares.com/bbs-index-run" title="所有精华">发现</a></li>
+						<li class=""><div class="mask"><span></span><em></em></div><a href="http://finalshares.com/bbs-forumlist-run" title="自由讨论区域">板块墙</a></li>
+					</ul>
+			</div>
+		</nav>
+				<div class="header_user_panel">
+			<div class="header_login">
+		
+	<span class="register">
+		<a rel="nofollow" href="http://finalshares.com/u-register-run" data-langur="g_register">注册</a>
+		<span>/</span>		
+	</span>
+	<span class="login">		
+		<a rel="nofollow" href="http://finalshares.com/u-login-run" data-langur="g_login">登录</a>
+	</span>
+</div>
+
+		</div>
+		
+	</div>
+	</header>
+
+<div class="tac"> </div>
+	<div class="main_wrap">
+		
+		<!--需要js定位-->
+		<div id="J_th_btnPostLi" class="btn_post_menu" style="display:none;">
+			<ul>
+				<li><a href="http://finalshares.com/bbs-post-html?fid=42" data-referer="true" class="J_qlogin_trigger">HTML格式贴</a></li>
+								<li><a href="http://finalshares.com/bbs-post-run?fid=42" data-referer="true" class="J_qlogin_trigger">普通帖</a></li>
+								
+			</ul>
+		</div>
+		<div class="main cc">
+			<div class="gc09 main_body">
+				<div class="clpd1 main_content">
+					<div class="cc bread_crumb_wrap read_topline" id="readTLD" data-fpp="http://finalshares.com/read-6818^^http://finalshares.com/read-6818^^1^^18^^0^^0^^1^^6818^^极分享(finalshares.com)">
+						<div class="fl bread_crumb">
+							<a href="http://finalshares.com/" title="极分享(finalshares.com)" class="home">首页</a><em>&gt;</em><a href="http://finalshares.com/thread-40">编程语言</a><em>&gt;</em><a href="http://finalshares.com/thread-42">Android修炼</a><em>&gt;</em><a href="http://finalshares.com/read-6818">Eclipse项目迁移到AndroidStudio的技巧</a>						</div>
+						<div class="fr readPager">
+												</div>
+					</div>
+					
+					<div id="app_test"></div>
+					<div id="cloudwind_read_top"></div>
+					<input type="hidden" id="js-tid" value="$tid">
+					<div class="read_page read_page_sign" id="J_posts_list">
+												<a name="0"></a><a name="a"></a><div id="cloudwind_read_readfloor_0"></div>
+	<div class="floor isfloor cc J_read_floor" id="read_0" data-isid="read_0">
+<table width="100%" style="table-layout:fixed;" class="floor_table">
+	<tbody><tr>
+		<td rowspan="2" class="floor_left">
+			<div class="floor_info">
+				<div class="floor_info_top J_floor_info_top">
+					<!--头像-->
+					<div class="face J_floor_face">
+						<div class="headIcon" style="left: 0px;"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/12_middle.jpg" class="J_avatar" data-type="middle" alt="极分享" data-bd-imgshare-binded="1"></div>
+						<div class="headMenu" style="left: -120px; opacity: 0;">
+							<div class="headMask"></div>
+							<ul>
+								<li><span class="bg"></span><a rel="nofollow" href="http://finalshares.com/u-12" target="_blank" class="space"><span class="dn" data-langur="g_sex_she">她</span><span class="" data-langur="g_sex_he">他</span><span data-langur="g_xsspace">的空间</span></a></li>
+								<li><span class="bg"></span><a rel="nofollow" href="http://finalshares.com/my-follow-add" data-uid="12" class="follow J_read_follow J_qlogin_trigger"><span data-langur="g_followWith">加关注</span></a></li>
+								<li><span class="bg"></span><a rel="nofollow" href="http://finalshares.com/message-message-pop?username=%E6%9E%81%E5%88%86%E4%BA%AB" class="message J_send_msg_pop J_qlogin_trigger" data-name="极分享"><span data-langur="g_pmto">写私信</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<!--等级-->
+					<div class="level J_floor_lvtip">
+						<div class="lvtip"><a class="cont" href="http://finalshares.com/profile-right-run?gid=3">管理员 <span data-langur="g_levelCompare">(点击对比)</span></a><span class="delta"></span></div>
+						<a class="lvIcon" href="http://finalshares.com/profile-right-run?gid=3"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20.gif" alt="管理员" data-bd-imgshare-binded="1"></a>
+					</div>
+					<div class="Exbtn"></div>
+				</div>
+				
+				<!--相关数据-->
+				<ul class="cc integral">
+									<li><em>UID</em><span>12</span></li>
+										<li><em>登录</em><span>2016-01-28</span></li>
+										<li><em>粉丝</em><a href="http://finalshares.com/space-fans-run?uid=12" target="_blank">67</a></li>
+										<li><em>关注</em><a href="http://finalshares.com/space-follows-run?uid=12" target="_blank">48</a></li>
+										<li><em>发帖</em><a href="http://finalshares.com/space-thread-run?uid=12" target="_blank">1062</a></li>
+										<li><em>主页</em><span title=""></span></li>
+										<li><em>金币</em><span title="6919枚">6919枚</span></li>
+									</ul>
+				
+<div class="medal" data-te="">
+			<div class="cc parts part1">
+			<div class="medalIcon" data-dada="1"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/shequjumin.gif" title="社区居民" width="28" height="28" alt="社区居民" data-bd-imgshare-binded="1"></a></div>
+					<div class="medalIcon" data-dada="2"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/zuiaishafa.gif" title="最爱沙发" width="28" height="28" alt="最爱沙发" data-bd-imgshare-binded="1"></a></div>
+					<div class="medalIcon" data-dada="3"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/zhongshihuiyuan.gif" title="忠实会员" width="28" height="28" alt="忠实会员" data-bd-imgshare-binded="1"></a></div>
+					<div class="medalIcon" data-dada="4"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/xihuandaren.gif" title="喜欢达人" width="28" height="28" alt="喜欢达人" data-bd-imgshare-binded="1"></a></div>
+					<div class="medalIcon" data-dada="5"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/shequlaomo.gif" title="社区劳模" width="28" height="28" alt="社区劳模" data-bd-imgshare-binded="1"></a></div>
+					<div class="medalIcon" data-dada="6"><a rel="nofollow" href="http://finalshares.com/medal-index-run"><img src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/yuanchuangxieshou.gif" title="原创写手" width="28" height="28" alt="原创写手" data-bd-imgshare-binded="1"></a></div>
+			</div>
+		</div>
+
+				<!--广告位-->
+				 
+				<!--信息栏结束-->
+			</div>
+			<!-- 打赏 -->
+					</td>
+		<td class="box_wrap floor_right">
+			<div class="floor_topline">
+				<div class="cc floor_firstline J_floor_topline">
+					<!--用户名-->
+					<div class="fl post_log">
+						<a href="http://finalshares.com/u-12" class="piece username J_user_card_show online" data-uid="12">极分享</a>
+												<span class="piece">
+							<span data-langur="b_read_postat">发布于</span><span class="postatNum">2016-01-27 15:03</span>
+													</span>
+											</div>
+											<div class="post_num"><span class="replies"><em id="topicRepliesNum">0</em></span><span class="slant">/</span><span class="hits"><em>497</em></span></div>
+									</div>
+								<div class="floor_title cc floor_secondline">
+					<h1 id="J_post_title">Eclipse项目迁移到AndroidStudio的技巧</h1>
+					<span class="floor_honor posts_icon">
+											</span>
+				</div>
+								<div class="cc floor_thirdline">
+										<div id="J_read_tag_wrap" class="fl read_tag_list">
+											</div>
+					<!--=========话题编辑=========-->
+					<div id="J_read_tag_edit" class="fl read_tag_edit" style="display:none;">
+						<form id="J_read_tag_form" action="http://finalshares.com/tag-index-editReadTag?tid=6818" method="post">
+							<div class="user_select_input J_user_tag_wrap fl mr10">
+								<ul class="fl J_user_tag_ul"></ul>
+								<input class="J_user_tag_input" data-name="tagnames[]" type="text">
+							</div>
+							<button id="J_read_tag_sub" class="btn btn_submit">保存</button>
+						<input type="hidden" name="csrf_token" value="3101bde3af1f7cde"><input type="hidden" name="csrf_token" value="3101bde3af1f7cde"></form>
+					</div>
+
+										<div class="fr actions">
+						<div class="isitem rao"><a rel="nofollow" href="http://finalshares.com/read-6818?uid=12" data-langur="gbb_readAuthorOnly">只看楼主</a></div>
+						<!--<div class="isitem sot"><a rel="nofollow" href="http://finalshares.com/read-6818?desc=1" data-langur="gbb_sort">倒序阅读</a></div>-->
+						<!--<div class="isitem sht"><a rel="nofollow" href="" data-langur="gbb_sort">分享到</a></div>-->
+						<div class="isitem lif">
+							<a id="J_floor_lift" href="javascript:;" data-langur="gbb_sort">楼层直达</a>
+							<span class="wrn" style="display:none;" data-langur="brd_pager_warning">请先填写楼层^^楼层应该是数字，亲！^^Sorry，没有 ^^ 层</span>
+							<div class="liftMenu" id="J_floor_lift_menu">
+								<em class="delta"></em>
+								<div class="cont">
+									<input type="text" class="liftValue"><span data-langur="floor">楼</span><input type="button" class="liftBtn" value="GO" data-langur="g_go">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+							</div>
+
+						<div id="J_read_main" class="floor_body">
+				 
+								<div class="fr">
+				<!--开始右侧广告位-->
+					 
+				<!--结束右侧广告位-->
+				</div>
+				<div class="editor_content">
+					
+
+	<title></title>
+
+
+<h2>Eclipse项目迁移到AndroidStudio的技巧</h2>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;现在决定把现有在Eclipse环境下开发的项目都迁移到AndroidStudio中去，这是大势所趋，我们不能够不紧跟大流<img alt="大笑" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/laugh.gif" data-bd-imgshare-binded="1">。从Eclipse中把项目弄到AndroidStudio中并不难，主要就是以下几步：</p>
+
+<p>&nbsp; 1，在Eclipse中选择要导出的项目，鼠标右键，选择Android下的Generate Gradle build files如图：</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202163210998.png" data-bd-imgshare-binded="1"></p>
+
+<p>2，点击上图中Next&gt;，进入到项目选择页面，要把主项目及相关的Libary项目都选中才行，</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202163345309.png" data-bd-imgshare-binded="1"></p>
+
+<p>3，点击上图中的Next&gt;,进入到下面的页面，要勾选图中下面带红圈的地方，</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202163450783.png" data-bd-imgshare-binded="1"></p>
+
+<p>4，点击上图中Finish，在你项目所在文件目录中就多了一些Gradle等配置文件。</p>
+
+<p>5，打开AndroidStudio开发工具，进入到欢迎页面，选择导入工程Import Project(Eclipse,ADT..)：</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202163949952.png" data-bd-imgshare-binded="1"></p>
+
+<p>6，进入到选择文件页面，选择从Eclipse中生成的文件目录下带图标的build.gradle文件，加以等待，就可以导入到AndroidStudio中。</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202164259646.png" data-bd-imgshare-binded="1"></p>
+
+<p>7，接下来可能还需要进行一些相关配置，比如工具会检测gradle文件版本是否可用，如果一切顺利的话，我们的项目就成功迁移到AndroidStudio中了。</p>
+
+<p>&nbsp;</p>
+
+<p>下面主要贴下我在项目迁移中遇到的两个问题：</p>
+
+<p>1，我们在Eclipse项目中，可以把.jpeg格式的图片名改成.png后缀名的图片，项目不会报错，且可以运行成功，但是AndroidStudio中则不可以，错误提示如下：</p>
+
+<p>&nbsp;</p>
+
+<p>'F:\as20150625\build-tools\21.1.2\aapt.exe'' finished with non-zero exit value 42<br>
+:NCFINANCING:mergeDebugResources FAILED<br>
+Error:Execution failed for task ':XXX:mergeDebugResources'.<br>
+res\drawable-hdpi\certification_green_bg.png: Error: com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process 'command 'F:\as20150625\build-tools\21.1.2\aapt.exe'' finished with non-zero exit value 42</p>
+
+<p>如图</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202164816838.png" data-bd-imgshare-binded="1"></p>
+
+<p>上图的意思就是项目中的certification_green_bg.png文件应该是.jpg文件，一般错误value值是42，只要把图片找到，把文件后缀名改了就可以重新Make Project成功了。</p>
+
+<p>2，这就涉及到我们的项目中代码规范及优化问题，在Eclipse中我们可以在不同的文件名下定义相同字段的属性字段，就像我们有时在不同的xml布局文件中用了相同的id一样，其实这都是不好的习惯，如果在AndroidStudio中，则会提示如下错误：</p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/20151202165154816.png" data-bd-imgshare-binded="1"></p>
+
+<p>意思就是提示在我们的attrs.xml文件中和jazzy_attrs.xml文件中定义了相同的属性字段，只要把相同的去掉一下就可以了。现在我的项目跑起来了~~</p>
+
+<dl id="btnDigg">
+	<dt>&nbsp;</dt>
+</dl>
+
+<dl>
+	<dt>&nbsp;</dt>
+	<dt>原文:http://blog.csdn.net/true100/article/details/50149957</dt>
+</dl>
+
+<dl id="btnBury">
+	<dd>&nbsp;</dd>
+</dl>
+
+				</div>
+							</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="box_wrap floor_bottom" valign="bottom">
+					<div class="chaCat J_chaCat">
+							</div>
+						<div style="display:none" id="J_read_like_list" class="cc read_like_list donotShow">
+				<div class="read_link_list_inner cc">
+					<h4 class="J_read_like_tit">最新喜欢</h4>
+									</div>
+				<div class="arrow"></div>
+			</div>
+						<div id="app_read_floor_0"></div>
+						<div id="cloudwind_read_content"></div>
+						<div class="floor_bottom_tips cc" id="topfloor_bottom_tips">
+								<div class="flr_mbtns">
+					<div class="flr_mbtn_main">
+											</div>
+									</div>
+								<div class="lorbtnA flr_bbtn reply">
+					<span class="lorbtnButter"><span class="rbbleft"></span><span class="rbbright"></span></span>
+					<a rel="nofollow" href="http://finalshares.com/read-6818?from=apkbus-49#floor_reply" data-hash="floor_reply" class="lorbtnInner" id="J_readreply_main" data-langur="b_floor_reply">回复</a>
+				</div>
+										<div class="cc lorbtnA flr_bbtn like" id="J_only_likebtn">
+							<span class="lorbtnButter"><span class="rbbleft"></span><span class="rbbright"></span></span>
+							<div class="lorbtnInner">
+								<a rel="nofollow" href="http://finalshares.com/like-mylike-doLike" data-tid="6818" data-pid="0" data-fid="42" class="ti J_like_btn J_qlogin_trigger" data-role="main" data-typeid="1" data-fromid="6818">
+									<span data-langur="b_floor_like">喜欢</span><em style="display:none" class="nums J_like_count J_like_user_btn" data-role="main" data-typeid="1" data-fromid="6818">0</em>
+								</a>
+							</div>
+						</div>
+										<!-- Baidu Share Button BEGIN -->
+					<div class="lorbtnA flr_bbtn bdsharebuttonbox share J_floor_share bdshare-button-style0-16" data-bd-bind="1453961957983">
+						<span class="lorbtnButter"><span class="rbbleft"></span><span class="rbbright"></span></span>
+						<a href="http://finalshares.com/read-6818?from=apkbus-49#" class="lorbtnInner bds_more" data-cmd="more">分享<span class=""></span></a>
+					</div>
+					<!-- Baidu Share Button END -->
+					<!-- Baidu Share BEGIN -->
+<script>
+window._bd_share_config = {
+//此处添加分享具体设置
+	common : {
+		//此处放置通用设置
+		bdText : 'Eclipse项目迁移到AndroidStudio的技巧',
+		bdDesc : 'Eclipse项目迁移到AndroidStudio的技巧现在决定把现有在Eclipse环境下开发的项目都迁移到AndroidStudio中去，这是大势所趋，我们不能够不紧跟大流。从Eclipse中把项…- 文章来自：极分享(finalshares.com)',
+		//bdUrl : '',
+		//bdPic : '自定义分享图片',
+		bdSign: 'off',
+		bdMini: 1,
+		bdMiniList:['tsina','qzone','sqq','weixin']
+	},
+	share : [{
+		//此处放置分享按钮设置		
+		"bdSize" : 16
+	}],
+	slide : [{
+		//此处放置浮窗分享设置
+		bdImg : 0,
+		bdPos : "right",
+		bdTop : 200
+	}],
+	image : [{
+		//此处放置图片分享设置		
+		viewType : 'list',
+		viewPos : 'top',
+		viewColor : 'black',
+		viewSize : '16',
+		viewList : ['tsina','qzone','sqq','weixin']
+	}]
+}
+//window._bd_share_config.common.bdText='Eclipse项目迁移到AndroidStudio的技巧';
+//window._bd_share_config.common.bdDesc= 'Eclipse项目迁移到AndroidStudio的技巧现在决定把现有在Eclipse环境下开发的项目都迁移到AndroidStudio中去，这是大势所趋，我们不能够不紧跟大流。从Eclipse中把项…- 文章来自：极分享(finalshares.com)';
+//以下为js加载部分
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<!-- Baidu Share END -->
+					<br>
+								</div>
+			<div style="display:none;" class="J_reply_wrap" id="J_reply_wrap_0"><div class="pop_loading"></div></div>
+		</td>
+	</tr>
+</tbody></table>
+</div>
+						<!-- dashang start -->						
+						<script type="text/javascript">
+							Wind.css(GV.JS_EXTRES + '/MedzAward/css/medz.cn.css');
+						</script>
+						
+						<div class="MedzAward cc">
+														<fieldset>
+								<legend>0人打赏</legend>
+							</fieldset>
+							<ul class="MedzAwardUsers cc">
+															</ul>
+						</div>						
+						<!--===打赏弹窗===-->
+						<div id="J_award_wrap" class=" wind_dialog core_pop_wrap" style="display:none;width:450px;height:230px;font-size:18px">
+							<div class="pop_top J_pop_handle"><a href="http://finalshares.com/read-6818?from=apkbus-49#" class="pop_close J_close">关闭</a><strong>举手不悔哦</strong></div>
+							<form class="J_award_form" target="_blank" action="http://finalshares.com/bbs-read-pay" method="post" id="1078559544">
+								<div style="padding:20px 40px;">
+									打赏金额<span style="color:#FFB452">￥</span>：
+										<input type="" name="pay" seep="1" min="&#39; + min + &#39;" max="&#39; + max + &#39;" value="1.00" class="input length_4  J_award_pay_input" id="MedzAwardNumber">									
+								</div>
+								<div style="padding:0px 40px 20px 40px;">
+									选择支付方式：
+								
+									<input type="radio" name="paymethod" value="1" checked="checked" style="width:16px;height:16px;"> 
+									<span style="display:inline-block;width:60px;height:20px;vertical-align: -3px;background:url(http://finalshares.com/themes/site/biv_viva/images/pay/alipay.png) 0 0 no-repeat"></span>
+									<input type="radio" name="paymethod" value="5" style="width:16px;height:16px;">
+									微信支付
+									<input type="hidden" name="credit" value="7">
+									<input type="hidden" name="user" value="12">
+									<input type="hidden" name="tid" value="6818">
+								</div>
+								<div class="pop_bottom">
+									<button type="submit" class="btn btn_submit J_award_submit" style="border-radius:4px;background:#059777;border-color: #059777;margin-top:10px;" id="MedzAwardSubmit">立即支付</button>
+								</div>
+							<input type="hidden" name="csrf_token" value="3101bde3af1f7cde"></form>
+						</div>						
+						<!--===打赏弹窗结束===-->					
+						<!--===微信扫码弹窗===-->
+						<div id="J_wxpay_wrap" class=" wind_dialog core_pop_wrap" style="display:none;width:450px;height:230px;font-size:18px">
+							<div class="pop_top J_pop_handle"><a href="http://finalshares.com/read-6818?from=apkbus-49#" class="pop_close J_close">关闭</a></div>							
+								<h4 style="text-align:center;padding:10px">微信扫码支付</h4>
+								<div style="text-align:center;padding:10px">
+									打赏金额<span style="color:#FFB452">￥</span>																
+								</div>
+								<img alt="微信扫码支付" src="" style="width:150px;height:150px;" class="J_ajax_refresh" data-bd-imgshare-binded="1">
+						</div>	
+						<!--===微信扫码弹窗结束===-->					
+						<script>						
+							Wind.ready(document, function(){
+								Wind.use('jquery', 'global', 'ajaxForm', GV.JS_ROOT +'pages/bbs/readAward.js?v=' +GV.JS_VERSION);
+							});
+						</script>
+						<!-- dashang end -->
+												<div class="cc read_topline read_bottomline" id="floor_reply">
+							<div class="fl bread_crumb"><a href="http://finalshares.com/thread-42-1" class="return_parent" rel="nofollow">返回列表</a></div>
+							<div class="fr readPager">
+														</div>
+						</div>
+						
+						 
+						<div style="display:none;" class="btn_post_menu" id="J_read_post_types">
+							<ul>
+																<li><a href="http://finalshares.com/bbs-post-run?fid=42" data-referer="true" class="J_qlogin_trigger">普通帖</a></li>
+															</ul>
+						</div>
+												<!--快速回复-->
+						<div class="fast_reply cc">
+							<div class="wrapA">
+								<div class="wrapB">
+									<div class="wrapC">
+										<div class="wrapD">
+																						<div class="cc field">
+												<div class="needLogin">
+													<span data-langur="g_needLogin">您需要登录后才可以回帖</span>
+												</div>
+											</div>
+																					</div>
+									</div>
+																		<div class="linkto un" id="J_fastreply_losi">
+										<a href="http://finalshares.com/u-login-run" rel="nofollow" class="login" data-langur="g_login">登录</a><span class="or" data-langur="g_or2">/</span><a rel="nofollow" href="http://finalshares.com/u-register-run" class="signup" data-langur="g_signup">注册</a>
+									</div>
+																	</div>
+							</div>
+							<div class="icon"><div class="title" data-langur="b_postReply">发表回复</div></div>
+						</div>
+						<!--快速回复结束-->
+												
+						<div id="cloudwind_read_bottom"></div>
+					</div>
+									</div>
+			</div>
+			<div class="ga03 clpd1 main_sidebar">
+				<div class="istop"></div>
+<div class="sidebarMain">
+		<!-- <div class="box_wrap sidebar_login">
+		<form id="J_login_form" action="http://finalshares.com/u-login-dologin" method="post">
+		<dl>
+			<dt id="J_sidebar_login_dt" class="cc">
+				<i class="icon_username" title="请输入电子邮箱/用户名"></i><label for="J_username">用户名</label><input required type="text" class="input" id="J_username" name="username" placeholder="电子邮箱/用户名">
+				<i class="icon_password" title="请输入密码"></i><label for="J_password">密　码</label><input required type="password" class="input" id="J_password" name="password" placeholder="密码">
+			</dt>
+			<dd class="associate"><a class="sendpwd" rel="nofollow" href="http://finalshares.com/u-findPwd-run">找回密码</a><label for="head_checkbox" title="下次自动登录"><input type="checkbox" id="head_checkbox" name="rememberme" value="31536000">自动登录</label></dd>
+			<dd class="operate"><button type="submit" id="J_sidebar_login" class="btn btn_big btn_submit">登录</button><a class="btn btn_big btn_error" href="http://finalshares.com/u-register-run" rel="nofollow">立即注册</a></dd>
+		</dl>
+		<input type="hidden" name="csrf_token" value="3101bde3af1f7cde"/><input type="hidden" name="csrf_token" value="3101bde3af1f7cde"/></form>
+	</div> -->
+	<div class="box_wrap sidebar_login_linkbtn">
+		<a class="login" href="http://finalshares.com/u-login-run" data-langur="g_login">登录</a>
+		<a class="signup" href="http://finalshares.com/u-register-run" data-langur="g_signup">注册</a>
+	</div>
+
+	<div class="box_wrap clpd1 clpdB sb_REXa">
+	<div class="cc lorbtnB">
+		<a href="http://finalshares.com/bbs-post-html?fid=42" class="lorbtnInner btnPost J_th_btnPost J_qlogin_trigger J_qlogin_trigger"><em>发帖</em><span><span></span></span></a>
+		<a href="javascript:;" class="lorbtnInner btnNav" id="J_sb_btnAmap"><em>跃迁</em><span><span></span></span></a>
+	</div>
+</div>
+<div class="forum_amap" id="J_sb_aMap">
+	<span class="delta"></span>
+		<div class="cont">
+			<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-113">高质分享</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-112">随手记</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-140">一键分享</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-149">极活动</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-111">极贡献</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-12">有问有答</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-38">我要提问</a>
+										<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-11">技术问答</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-128">支付专题</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-133">IM专题</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-100">多媒体专题</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-105">网络安全</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-108">机器学习</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-109">云计算专题</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-110">Docker专题</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-116">优秀源码</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-117">炫酷工具</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-102">定位导航专题</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-103">大数据专题</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-99">浏览器专题</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-138">跨平台开发</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-141">运营专题</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-143">嵌入式开发</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-144">物联网专题</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-145">开发环境专题</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-147">网络专题</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-151">Linux开发</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-152">ERP专题</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-153">游戏专题</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-154">微信开发</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-158">虚拟现实</a>
+										<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-78">专题荟萃</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-124">顶尖创意</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-14">精彩笑料</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-13">窒息美图</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-20">科技速递</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-126">惊艳视频</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-127">疯狂天才</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-150">IT人生</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-1">程序人生</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-80">设计案例</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-50">设计工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-49">灵感素材</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-48">视觉设计</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-9">Android UI</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-23">Android 工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-22">Android 功能</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-25">Android 性能</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-29">Android 架构</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-96">Android技巧</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-81">Android案例</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-6">Android开发</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-47">iOS UI</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-53">iOS功能</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-52">iOS性能</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-51">iOS架构</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-54">iOS工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-97">iOS技巧</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-82">iOS案例</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-26">iOS开发</a></dt>
+		</dl>
+				<dl class="cc current">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1 current" href="http://finalshares.com/thread-42">Android修炼</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-41">iOS 修炼</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-43">Java修炼</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-44">PHP修炼</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-45">Python修炼</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-46">JavaScript修炼</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-77">C/C++修炼</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-146">Golang修炼</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-89">数据结构和算法</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-88">设计模式</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-84">经典源码</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-107">极速上手</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-40">编程语言</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-55">JS/CSS/HTML</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-62">JQuery</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-60">Bootstrap</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-156">前端性能</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-159">前端工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-83">前端案例</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-34">前端开发</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-56">Spring</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-59">SpringMVC</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-65">Struts</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-64">Hibernate</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-63">Mybatis</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-67">MySQL</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-66">Oracle</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-68">NoSQL</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-148">NodeJS</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-155">后端性能</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-160">后端工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-85">后端案例</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-35">后端开发</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-57">分布式文件系统</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-73">分布式数据库</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-72">负载均衡</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-71">CDN加速</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-70">分布式缓存</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-69">架构案例</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-36">服务器架构</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-118">测试修炼</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-120">测试工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-119">测试技巧</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-157">测试案例</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-115">软件测试</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-58">环境部署</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-76">服务器监测</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-75">业务监测</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-74">性能监测</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-161">运维工具</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-86">运维案例</a>
+							</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-37">运维方案</a></dt>
+		</dl>
+				<dl class="cc">
+			<dd class="cc"><div class="cc ddInner">
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-32">公司注册</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-33">创业招聘</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-31">股权分配</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-30">合伙人</a>
+								<a class="amap_td amap_td2" href="http://finalshares.com/thread-10">创业融资</a>
+								<a class="amap_td amap_td3" href="http://finalshares.com/thread-91">创业之路</a>
+								<a class="amap_td amap_td1" href="http://finalshares.com/thread-123">社区公告</a>
+										<span class="amap_td amap_td2"></span>
+											<span class="amap_td amap_td3"></span>
+								</div></dd>
+			<dt class="J_sidebar_forum_toggle"><a href="http://finalshares.com/thread-7">创业路上</a></dt>
+		</dl>
+			</div>
+</div>
+
+	<div class="box_wrap">
+	<h2 class="clmg1 box_title">热门话题</h2>
+	<div class="clmg1 clpdB tags_hot">
+	<ul class="cc">
+				<li><a href="http://finalshares.com/tag-%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B" class="title">设计案例</a></li>
+				<li><a href="http://finalshares.com/tag-Android%E4%BF%AE%E7%82%BC" class="title">Android修炼</a></li>
+				<li><a href="http://finalshares.com/tag-iOS%E4%BF%AE%E7%82%BC" class="title">iOS修炼</a></li>
+				<li><a href="http://finalshares.com/tag-Linux%E6%8A%80%E5%B7%A7" class="title">Linux技巧</a></li>
+				<li><a href="http://finalshares.com/tag-Android%E5%8A%9F%E8%83%BD" class="title">Android功能</a></li>
+				<li><a href="http://finalshares.com/tag-android" class="title">android</a></li>
+				<li><a href="http://finalshares.com/tag-%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7" class="title">设计工具</a></li>
+				<li><a href="http://finalshares.com/tag-%E8%AE%BE%E8%AE%A1%E7%B4%A0%E6%9D%90" class="title">设计素材</a></li>
+				<li><a href="http://finalshares.com/tag-app%E6%B5%8B%E8%AF%95" class="title">app测试</a></li>
+				<li><a href="http://finalshares.com/tag-javascript..." class="title">javascript...</a></li>
+			</ul>
+	</div>
+</div>
+ 
+</div>
+
+<div role="structure_dilerp" data-lcm="100" class="box_wrap design_layout_style J_mod_layout_none" id="dilerp">			<h2 role="titlebar" class="design_layout_hd cc J_layout_hd" style=""><span style="float:left;margin-left:88px;font-size: 18px;color: #000000;">最热文章墙</span></h2>			<div class="design_layout_ct J_layout_item"><div id="J_mod_65" style="" data-id="65" data-model="thread" class="mod_box J_mod_box mod_no"><div class="tmode_list tmode_list_sort">
+
+  <li><a href="http://finalshares.com/read-1026" target="_blank">30534/146   &nbsp;&nbsp;翻墙利器“蓝灯”来了，可以科学上网了有木有@^@</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-651" target="_blank">18610/133   &nbsp;&nbsp;【精品推荐】200多种Android动画效果的强悍框架，太全了，不看这个，再有动画的问题，不理你了^@^</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-859" target="_blank">13577/140   &nbsp;&nbsp;新年福利，程序员表白的正确姿势之（一）：改几行代码就变成自己的表白了</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6569" target="_blank">8964/33   &nbsp;&nbsp;【原创大“晒”】原创表白APP，以程序员的姿势备战新年后的7夕，不定期完善中！</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2219" target="_blank">8448/13   &nbsp;&nbsp;麻省理工的一帮疯子，真的实现了随意操控万物！(绝对黑科技)</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2660" target="_blank">8338/86   &nbsp;&nbsp;2016抢红包软件及源码</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1629" target="_blank">8251/7   &nbsp;&nbsp;用程序员的姿势抢过年的火车票</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-608" target="_blank">7797/53   &nbsp;&nbsp;省时省力的Android组件群来了，非常棒的原型参考</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-178" target="_blank">6637/7   &nbsp;&nbsp;有木有这样一张酷图帮你集齐所有git命令超实用</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1145" target="_blank">6571/62   &nbsp;&nbsp;【持续更新中】Android福利贴（二）：资料源码大放送</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1161" target="_blank">6253/13   &nbsp;&nbsp;这才是真正的黑客：Github收获12200+Stars，人气远超微软开源Visual Studio</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2793" target="_blank">6035/4   &nbsp;&nbsp;码魂：程序员的牛B漫画</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-467" target="_blank">5935/52   &nbsp;&nbsp;【精品推荐】产品级的音乐播放器源码，功能太强大了，最好的产品原型有木有？</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-874" target="_blank">5627/4   &nbsp;&nbsp;用JavaScript 来开发iOS和Android 原生应用：React Native开源框架中文版来啦</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2264" target="_blank">5047/6   &nbsp;&nbsp;一张图搞定iOS学习路线，非常全面</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2265" target="_blank">4937/6   &nbsp;&nbsp;一张图搞定Android学习路线，非常全面</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-50" target="_blank">4576/8   &nbsp;&nbsp;基于Android支付宝支付设计和开发方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-3173" target="_blank">4445/10   &nbsp;&nbsp;2016程序员跳槽全攻略</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1159" target="_blank">4384/7   &nbsp;&nbsp;GitHub上排名前50的iOS项目：总有一款你用得着</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2145" target="_blank">3945/20   &nbsp;&nbsp;【持续更新中】Android福利贴（一）：资料源码</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6767" target="_blank">3931/14   &nbsp;&nbsp;一个绚丽的loading动效分析与实现！</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-419" target="_blank">3660/5   &nbsp;&nbsp;B站建开源工作组：APP想支持炫酷弹幕的看过来</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-158" target="_blank">3653/1   &nbsp;&nbsp;［前端开发］复制到剪切版（zClip）</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6501" target="_blank">3596/23   &nbsp;&nbsp;【原创大“晒”】手把手教你做一个GPS位置闹钟-1基本准备工作</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-524" target="_blank">3446/17   &nbsp;&nbsp;基于瀑布流的美女图片浏览App，有注释的源代码</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2339" target="_blank">3376/0   &nbsp;&nbsp;10个优秀资源让你迅速精通正则表达式</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6735" target="_blank">3326/0   &nbsp;&nbsp;新一代Android渠道打包工具：1000个渠道包只需要5秒</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-58" target="_blank">3308/10   &nbsp;&nbsp;珍藏多年的素材，灵感搜寻网站</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2253" target="_blank">3026/7   &nbsp;&nbsp;微信支付终于成功了（安卓，iOS），在此分享</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-65" target="_blank">2968/9   &nbsp;&nbsp;安卓下拉刷新解决方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-359" target="_blank">2928/0   &nbsp;&nbsp;开箱即用！Android四款系统架构工具</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-866" target="_blank">2842/1   &nbsp;&nbsp;3款iOS和Android最酷的开源自动化测试工具</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-376" target="_blank">2828/15   &nbsp;&nbsp;【精品推荐】40个优秀Android组件帮你省时省力，再也不用担心回家吃晚饭了@~@</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-125" target="_blank">2615/1   &nbsp;&nbsp;设计模式理解和应用系列之（四）—— 行为型模式3</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-256" target="_blank">2614/1   &nbsp;&nbsp;18个最好的响应式Web设计工具和库</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-5498" target="_blank">2610/32   &nbsp;&nbsp;【教程一】搭配Android Studio，如何实现App远程真机debug?</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6633" target="_blank">2558/1   &nbsp;&nbsp;关于Android Studio的问题总结和使用技巧</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-182" target="_blank">2551/5   &nbsp;&nbsp;十大技巧快速提升Android应用开发性能</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-817" target="_blank">2525/2   &nbsp;&nbsp;Android屏幕适配方案：产品级的解决方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6484" target="_blank">2512/42   &nbsp;&nbsp;极分享【原创大“晒”】，奖品丰厚，精彩不断！</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2387" target="_blank">2443/3   &nbsp;&nbsp;如何使用1M的内存排序100万个8位数</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2661" target="_blank">2437/8   &nbsp;&nbsp;惊艳的App引导页：背景图片切换加各个页面动画效果</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2226" target="_blank">2433/2   &nbsp;&nbsp;定制Android设备的神器：认识Xposed</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-2227" target="_blank">2419/4   &nbsp;&nbsp;超级好用的去视频广告插件：Chrome内核浏览器可用，完全木有30秒的广告了</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-130" target="_blank">2381/3   &nbsp;&nbsp;八个最优秀的Android Studio插件</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-150" target="_blank">2367/1   &nbsp;&nbsp;Android完美实现图片圆角和圆形</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1193" target="_blank">2360/7   &nbsp;&nbsp;【持续更新中】iOS福利大放送</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-379" target="_blank">2333/5   &nbsp;&nbsp;iOS语音输入解决方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-729" target="_blank">2312/3   &nbsp;&nbsp;基于Node.js的强大爬虫，能直接发布抓取的文章哦</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6641" target="_blank">2312/0   &nbsp;&nbsp;JS点击灯泡点亮或熄灭的网页特效</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-307" target="_blank">2301/4   &nbsp;&nbsp;中国黑客的隐秘江湖：攻守对立，顶尖高手月入千万美元</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-126" target="_blank">2294/4   &nbsp;&nbsp;流媒体视频直播方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-477" target="_blank">2191/12   &nbsp;&nbsp;【精品推荐】基于环信IM的凡信聊天APP源码：非常不错的参考</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-206" target="_blank">2183/1   &nbsp;&nbsp;［前端开发］二维码（QRCode）</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-911" target="_blank">2128/2   &nbsp;&nbsp;基于HTML5 30个免费的Bootstrap响应式模板之(一)</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-6518" target="_blank">2090/0   &nbsp;&nbsp;《老罗的Android之旅》导读PPT</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-1165" target="_blank">2084/5   &nbsp;&nbsp;YYKit 超好用的iOS工具库,质量也很高哦</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-42" target="_blank">2068/3   &nbsp;&nbsp;免费的短信验证码实现方案</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-481" target="_blank">2067/9   &nbsp;&nbsp;【精品推荐】iOS类似土豆视频源码，非常赞的视频类产品原型</a></li>
+  <div> <br> </div>
+  <li><a href="http://finalshares.com/read-204" target="_blank">2059/1   &nbsp;&nbsp;纯div+css绘制的可爱卡通</a></li>
+  <div> <br> </div>
+
+</div></div></div></div>
+ 
+<!--design role="segment" id="linkdemo"/-->
+
+				<!--cnzz tui-->
+				<script type="text/javascript" c="gd" charset="utf-8" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/cs.php"></script><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div>
+				<!--cnzz tui--> 
+				<pw-tpl id="viva_b_sbar2#">				 
+				<div id="cloudwind_threadright_content"></div>
+			</pw-tpl>
+ 
+<!--design role="segment" id="linkdemo"/-->
+
+				<!--cnzz tui-->
+				<script type="text/javascript" c="gd" charset="utf-8" src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/cs.php"></script><div id="aliyun_cnzz_tui_1000099092" style="display:block;float:none;border:0 none;margin:0;padding:0;visibility:visible;overflow:visible;*zoom:1;position:relative;z-index:1;"></div>
+				<!--cnzz tui--> 
+				<pw-tpl id="viva_b_sbar2#">				 
+				<div id="cloudwind_threadright_content"></div>
+			</pw-tpl></div>
+		</div>
+	</div>
+	<!--.main-wrap,#main End-->
+<!--
+<div class="tac">
+ <br />
+ 
+</div>
+-->
+</div>  <!-- #LoR 结束 -->
+
+<div class="footer_wrap">
+	<div class="footer">
+		
+		<div class="cc footer_stamp">
+			<div class="gc08 cc">
+				<div class=" center">
+											&nbsp;&nbsp;<a href="http://finalshares.com/read-435" style="color:#ffffff;">社区助手</a>						&nbsp;&nbsp;<a href="http://weixinbrothers.com/" style="color:#ffffff;">公司官网</a>						&nbsp;&nbsp;<a href="http://finalshares.com/read-432" style="color:#ffffff;">极分享与未来只差一个你</a>						&nbsp;&nbsp;<a href="http://finalshares.com/read-434" style="color:#ffffff;">内容许可</a>				</div>
+			</div>
+		</div>
+		<div class="cc footer_stamp">
+			<div class="gc08 cc">
+				<div class="center"> <a href="http://finalshares.com/" target="_blank" rel="nofollow">© Copyright 2015,极分享(finalshares.com)</a>
+					<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">&nbsp;&nbsp;鄂ICP备15010461号</a>
+				</div>
+				<div class="fl"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256777902'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256777902' type='text/javascript'%3E%3C/script%3E"));
+</script><span id="cnzz_stat_icon_1256777902"><a href="http://www.cnzz.com/stat/website.php?web_id=1256777902" target="_blank" title="站长统计">站长统计</a></span><script src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/z_stat.php" type="text/javascript"></script><script src="./极分享：高质分享+专业互助=没有难做的软件+没有不得已的加班_files/core.php" charset="utf-8" type="text/javascript"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e58d4c461a6c50a13de5ee995bf40099";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
+			</div>
+			<div class="gc04 fr">Powered by <a href="http://www.phpwind.net/" target="_blank" rel="nofollow">Phpwind 9.0.1</a>Created by <a href="http://bivean.com/">weixinbrothers</a></div>
+		</div>
+	</div>
+	 
+	 
+	 
+	<div id="cloudwind_common_bottom"></div>
+	</div>
+
+<!--返回顶部-->
+<a href="http://finalshares.com/read-6818?from=apkbus-49#" rel="nofollow" role="button" id="back_top" tabindex="-1" style="display: inline;">返回顶部</a>
+
+<div id="lorCloak"></div>
+</div>
+
+<textarea id="J_like_user_ta" class="dn">	&lt;div id="" class="core_pop_wrap" style="position:absolute;"&gt;
+		&lt;div class="core_pop"&gt;
+			&lt;div class="floot_like_pop"&gt;
+				&lt;div class="pop_top"&gt;&lt;a href="#" class="pop_close J_like_user_close"&gt;关闭&lt;/a&gt;最新喜欢&lt;/div&gt;
+				&lt;div class="pop_cont"&gt;
+					&lt;ul class="cc J_like_user_list"&gt;&lt;/ul&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+</textarea>
+
+
+<script>
+var TID = '6818';
+Wind.use('jquery', 'global', 'dialog', function(){
+
+
+	// 阅读页的常用交互
+	Wind.js(GV.JS_ROOT +'pages/bbs/read.js?v='+ GV.JS_VERSION);
+
+	// 投票帖
+	if($('ul.J_vote_item, a.J_vote_list_show').length) {
+		Wind.js(GV.JS_ROOT +'pages/bbs/readVote.js?v='+ GV.JS_VERSION);
+	}
+
+	// 购买记录
+	if($('#J_content_sell, #J_attach_buy, a.J_buy_record, .J_attach_post_del, a.J_attach_post_buy').length) {
+		Wind.js(GV.JS_ROOT + 'pages/bbs/buyRecords.js?v=' + GV.JS_VERSION);
+	}
+
+	//媒体播放
+	if( $('div.J_audio,div.J_video').length ) {
+		Wind.js(window.GV.JS_ROOT + 'pages/bbs/media_play.js?v=' + GV.JS_VERSION);
+	}
+
+
+	// 图片懒加载
+	Wind.js(GV.JS_ROOT + 'util_libs/lazyload.js?v=' + GV.JS_VERSION, function(){
+		$("img.J_lazy").lazyload({
+	        effect: 'fadeIn',
+	        error: function(settings){
+	        	$(this).attr("src", '#').removeClass("J_lazy")
+	        }
+	    });
+	});
+});
+</script>
+
+
+
+
+<div class="bdshare-slide-button-box bdshare-slide-style-r0" style="top: 200px; width: 0px; z-index: 99999; right: 0px;" data-bd-bind="1453961958002"><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bdshare-slide-button" style="left: -24px;"></a><div class="bdshare-slide-list-box" style="width: 0px; display: none;"><div class="bdshare-slide-top">分享到</div><div class="bdshare-slide-list"><ul class="bdshare-slide-list-ul" style="width: 116px;"></ul></div><div class="bdshare-slide-bottom" style="width: 116px;"><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="slide-more" data-cmd="more">更多...</a></div></div></div><div id="bdimgshare_1453961958455" class="sr-bdimgshare sr-bdimgshare-list sr-bdimgshare-16 sr-bdimgshare-black" style="height: 36px; line-height: 26px; font-size: 12px; position: absolute; top: 1049px; left: 175px; width: 553px; display: none;" data-bd-bind="1453961958454"><div class="bdimgshare-bg"></div><div class="bdimgshare-content bdsharebuttonbox bdshare-button-style0-16"><label class="bdimgshare-lbl">图片分享</label><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bds_tsina" data-cmd="tsina" hidefocus=""></a><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bds_qzone" data-cmd="qzone" hidefocus=""></a><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bds_sqq" data-cmd="sqq" hidefocus=""></a><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bds_weixin" data-cmd="weixin" hidefocus=""></a><a href="http://finalshares.com/read-6818?from=apkbus-49#" onclick="return false;" class="bds_more" data-cmd="more" hidefocus=""></a></div></div></body></html>

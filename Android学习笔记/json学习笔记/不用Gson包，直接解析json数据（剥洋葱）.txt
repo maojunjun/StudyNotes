@@ -1,0 +1,11 @@
+
+
+通过http请求获取到json格式数据，通过创建JSONObject对象逐层获取json格式数据：
+
+					JSONObject obj = new JSONObject(json);
+					
+					JSONObject obj1 = obj.getJSONObject("data");
+
+					JSONArray array = obj1.getJSONArray("news");
+					
+					System.out.println(array.toString());

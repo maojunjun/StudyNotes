@@ -1,0 +1,6 @@
+WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		
+		Display display  =  wm.getDefaultDisplay();
+		
+		int height2  = display.getHeight();
+		int width2 = display.getWidth();

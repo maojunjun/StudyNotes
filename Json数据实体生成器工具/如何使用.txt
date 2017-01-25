@@ -1,0 +1,6 @@
+Notes
+
+1）可执行的exe文件位于以下目录：
+EntityGenerator(Winform)/bin/Debug/ JsonCSharpClassGenerator.exe
+
+2）EntityGenerator.sln打开后，是实体生成器的网页版，可以部署到公司的内网服务器，用于给Android和iOS团队在线生成实体。

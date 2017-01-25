@@ -1,0 +1,109 @@
+.lbs_scroll_info {
+	width: 300px;
+	height: 250px;
+	float: right;
+	margin: 15px 0px 0px 10px;
+}
+
+/*轮播图样式---开始*/
+.scroll-out {
+	width: 300px;
+	height: 250px;
+}
+
+.ul-wrap {
+	width: 300px;
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+}
+
+.pic-ul {
+	height: 160px;
+	width: 1200px;
+	display: block;
+	position: absolute;
+}
+
+.pic-ul li {
+	height: 160px;
+	width: 300px;
+	float: left;
+}
+
+.scro-bg {
+	width: 300px;
+	height: 20px;
+	margin: -30px 0 0 0;
+	position: absolute;
+}
+
+.pic-link {
+	display: block;
+	padding-top: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.numWrap {
+	display: block;
+	height: 30px;
+	padding: 10px 10px 0 93px;
+}
+
+.numWrap li {
+	float: left;
+	text-align: center;
+	margin-left: 10px;
+	width: 19px;
+	height: 19px;
+	background: url(../../../static/image/friendlink/scrollnum.png) no-repeat;
+	color: #333;
+	cursor: pointer;
+}
+
+.numWrap .curr {
+	background: url(../../../static/image/friendlink/scrollnum_new.png)
+		no-repeat;
+	color: #000;
+}
+/*轮播图样式结束*/
+
+/*今天帖子总数*/
+.thread_info {
+	width: 298px;
+	height: 80px;
+	float: right;
+	margin:20px 0px 0px 10px;
+	background-color: #E8F6FF;
+	border: 1px solid #E5E5E5;
+}
+
+.thread_detailinfo {
+	width: 98px;
+	height: 70px;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	padding-top:9px;
+}
+
+.threadinfo_number {
+	font-size: 20px;
+}
+
+.span_partition {
+	height: 40px;
+	float: left;
+	border-right: 1px solid #E5E5E5;
+	margin: 20px 0 15px 0;
+}
+
+.tdi_nums {
+	font-size: 16px;
+	color: #20B3E9;
+}
